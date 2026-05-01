@@ -74,8 +74,8 @@ namespace gamevault.UserControls
                 }
                 if (LoginManager.Instance.IsLoggedIn() && selectedUser.ID == LoginManager.Instance.GetCurrentUser().ID)
                 {
-                    MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to change your own role?\nYou may lose privileges.",
-                    "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                    MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要更改自己的角色吗？\n你可能会失去部分权限。",
+                    "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                     if (result != MessageDialogResult.Affirmative)
                     {
                         ((ComboBox)sender).SelectionChanged -= PermissionRole_SelectionChanged;
@@ -85,7 +85,7 @@ namespace gamevault.UserControls
                     }
                 }
                 await WebHelper.PutAsync(@$"{SettingsViewModel.Instance.ServerUrl}/api/users/{selectedUser.ID}", JsonSerializer.Serialize(new UpdateUserDto() { Role = selectedUser.Role }));
-                MainWindowViewModel.Instance.AppBarText = $"Successfully updated permission role of user '{selectedUser.Username}' to '{selectedUser.Role}'";
+                MainWindowViewModel.Instance.AppBarText = $"已成功将用户 '{selectedUser.Username}' 的权限角色更新为 '{selectedUser.Role}'";
             }
             catch (Exception ex)
             {
@@ -100,8 +100,8 @@ namespace gamevault.UserControls
             {
                 User selectedUser = (User)((FrameworkElement)sender).DataContext;
                 await WebHelper.PutAsync($@"{SettingsViewModel.Instance.ServerUrl}/api/users/{selectedUser.ID}", JsonSerializer.Serialize(new User() { Activated = selectedUser.Activated }));
-                string state = selectedUser.Activated == true ? "activated" : "deactivated";
-                MainWindowViewModel.Instance.AppBarText = $"Successfully {state} user '{selectedUser.Username}'";
+                string state = selectedUser.Activated == true ? "已激活" : "已停用";
+                MainWindowViewModel.Instance.AppBarText = $"已成功{state}用户 '{selectedUser.Username}'";
             }
             catch (Exception ex)
             {
@@ -119,8 +119,8 @@ namespace gamevault.UserControls
 
             if (selectedUser.DeletedAt == null)
             {
-                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to delete User '{selectedUser.Username}' ?",
-                    "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要删除用户 '{selectedUser.Username}' 吗？",
+                    "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                 if (result != MessageDialogResult.Affirmative)
                     return;
             }
@@ -137,7 +137,7 @@ namespace gamevault.UserControls
                 else
                 {
                     await WebHelper.PostAsync(@$"{SettingsViewModel.Instance.ServerUrl}/api/users/{selectedUser.ID}/recover", "");
-                    MainWindowViewModel.Instance.AppBarText = $"Successfully recovered deleted user '{selectedUser.Username}'";
+                    MainWindowViewModel.Instance.AppBarText = $"已成功恢复已删除的用户 '{selectedUser.Username}'";
                     await InitUserList();
                 }
             }
@@ -169,7 +169,7 @@ namespace gamevault.UserControls
             try
             {
                 await WebHelper.PutAsync($@"{SettingsViewModel.Instance.ServerUrl}/api/users/{selectedUser.ID}", JsonSerializer.Serialize(selectedUser));
-                MainWindowViewModel.Instance.AppBarText = "Successfully saved user changes";
+                MainWindowViewModel.Instance.AppBarText = "已成功保存用户更改";
             }
             catch (Exception ex)
             {
@@ -217,7 +217,7 @@ namespace gamevault.UserControls
             try
             {
                 await WebHelper.PutAsync(@$"{SettingsViewModel.Instance.ServerUrl}/api/games/reindex", string.Empty);
-                MainWindowViewModel.Instance.AppBarText = "Successfully reindexed games";
+                MainWindowViewModel.Instance.AppBarText = "已成功重新索引游戏";
             }
             catch (Exception ex)
             {

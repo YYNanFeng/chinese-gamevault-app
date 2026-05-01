@@ -89,16 +89,16 @@
                 <ColumnDefinition Width="299*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Background="{DynamicResource MahApps.Brushes.ThemeBackground2}">
-                <TextBlock Text="Game Settings" FontSize="30" Margin="10" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+                <TextBlock Text="游戏设置" FontSize="30" Margin="10" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
                 <StackPanel VerticalAlignment="Top" Margin="40,70,0,0">
                     <StackPanel Visibility="{Binding Game,Converter={StaticResource tabVisConv},ConverterParameter='local'}">
-                        <TextBlock Text="Your Computer" FontSize="30" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+                        <TextBlock Text="你的电脑" FontSize="30" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
                         <TabControl x:Name="uiSettingsHeadersLocal" TabStripPlacement="Left" Background="Transparent" SelectionChanged="SettingsTabControl_SelectionChanged">
                             <TabItem>
                                 <TabItem.Header>
                                     <StackPanel Orientation="Horizontal">
                                         <Path Style="{StaticResource TabItemHeaderPath}" Data="{DynamicResource IconGameSettingsFolder}" VerticalAlignment="Center"/>
-                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="Installation"/>
+                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="安装"/>
                                     </StackPanel>
                                 </TabItem.Header>
                             </TabItem>
@@ -106,20 +106,20 @@
                                 <TabItem.Header>
                                     <StackPanel Orientation="Horizontal">
                                         <Path Style="{StaticResource TabItemHeaderPath}" Data="{DynamicResource IconGameSettingsLaunchOptions}" VerticalAlignment="Center"/>
-                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="Launch Options"/>
+                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="启动选项"/>
                                     </StackPanel>
                                 </TabItem.Header>
                             </TabItem>
                         </TabControl>
                     </StackPanel>
                     <StackPanel Visibility="{Binding Game,Converter={StaticResource tabVisConv},ConverterParameter='server'}">
-                        <TextBlock Text="Server" FontSize="30" Margin="0,30,0,0" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+                        <TextBlock Text="服务器" FontSize="30" Margin="0,30,0,0" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
                         <TabControl x:Name="uiSettingsHeadersRemote" TabStripPlacement="Left" Background="Transparent" SelectionChanged="SettingsTabControl_SelectionChanged">
                             <TabItem>
                                 <TabItem.Header>
                                     <StackPanel Orientation="Horizontal">
                                         <Path Style="{StaticResource TabItemHeaderPath}" Data="{DynamicResource IconGameSettingsEditImages}" VerticalAlignment="Center"/>
-                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="Edit Images"/>
+                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="编辑图片"/>
                                     </StackPanel>
                                 </TabItem.Header>
                             </TabItem>
@@ -127,7 +127,7 @@
                                 <TabItem.Header>
                                     <StackPanel Orientation="Horizontal">
                                         <Path Style="{StaticResource TabItemHeaderPathStroke}" Data="{DynamicResource IconDatabase}" VerticalAlignment="Center"/>
-                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="Metadata"/>
+                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="元数据"/>
                                     </StackPanel>
                                 </TabItem.Header>
                             </TabItem>
@@ -135,7 +135,7 @@
                                 <TabItem.Header>
                                     <StackPanel Orientation="Horizontal">
                                         <Path Style="{StaticResource TabItemHeaderPathStroke}" Data="{DynamicResource IconGameSettingsEditDetails}" VerticalAlignment="Center"/>
-                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="Custom Metadata"/>
+                                        <TextBlock Style="{StaticResource TabItemHeaderTextBlock}" Text="自定义元数据"/>
                                     </StackPanel>
                                 </TabItem.Header>
                             </TabItem>
@@ -153,8 +153,8 @@
                     </TextBlock.Text>
                 </TextBlock>
                 <TextBlock Text="{Binding Path=Game.ID,StringFormat='{}ID {0}'}" FontSize="16"/>
-                <TextBlock Text="{Binding Path=Game.Version,StringFormat='{}Version {0}',TargetNullValue='Version N/A'}" FontSize="16"/>
-                <TextBlock Text="{Binding Path=InstalledGameVersion,StringFormat='{}Installed Version {0}',TargetNullValue='Installed Version N/A'}" FontSize="16"/>
+                <TextBlock Text="{Binding Path=Game.Version,StringFormat='{}版本 {0}',TargetNullValue='版本未知'}" FontSize="16"/>
+                <TextBlock Text="{Binding Path=InstalledGameVersion,StringFormat='{}已安装版本 {0}',TargetNullValue='已安装版本未知'}" FontSize="16"/>
             </StackPanel>
             <Grid Grid.Column="1" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" ClipToBounds="True">
                 <mah:MetroAnimatedTabControl x:Name="uiSettingsContent" Background="Transparent">
@@ -162,19 +162,19 @@
                         <StackPanel Margin="20,20,0,0">
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                                 <Path Data="{DynamicResource IconGameSettingsFolder}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" Margin="0,2,0,0"/>
-                                <TextBlock Text="Installation" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock Text="安装" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
-                            <TextBlock Text="Here you can manage your Game Installation" FontSize="15" Margin="0,5,0,0"/>
-                            <TextBlock Text="Installation" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
-                            <TextBlock Text="This Game was installed to:" FontSize="15" FontWeight="Bold" Margin="0,20,0,0"/>
+                            <TextBlock Text="在此你可以管理你的游戏安装" FontSize="15" Margin="0,5,0,0"/>
+                            <TextBlock Text="安装" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
+                            <TextBlock Text="此游戏已安装到：" FontSize="15" FontWeight="Bold" Margin="0,20,0,0"/>
                             <Border CornerRadius="5" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" Margin="0,5,20,10" Padding="10">
                                 <TextBlock Text="{Binding Directory}" FontSize="15"/>
                             </Border>
                             <StackPanel Orientation="Horizontal">
-                                <local:IconButton Kind="Danger" Text="Uninstall Game" Icon="{DynamicResource IconTrash}" IconMargin="0,0,5,2" Width="142" Height="33" FontSize="15" Click="Uninstall_Click"/>
-                                <local:IconButton Text="Open Directory" Icon="{DynamicResource IconGameSettingsFolder}" IconMargin="0,0,5,2" Width="142" Height="33" FontSize="15" Margin="10,0,0,0"  Click="OpenDirectory_Click"/>
+                                <local:IconButton Kind="Danger" Text="卸载游戏" Icon="{DynamicResource IconTrash}" IconMargin="0,0,5,2" Width="142" Height="33" FontSize="15" Click="Uninstall_Click"/>
+                                <local:IconButton Text="打开目录" Icon="{DynamicResource IconGameSettingsFolder}" IconMargin="0,0,5,2" Width="142" Height="33" FontSize="15" Margin="10,0,0,0"  Click="OpenDirectory_Click"/>
                             </StackPanel>
-                            <TextBlock Text="Disk Usage:" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
+                            <TextBlock Text="磁盘使用：" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
                             <TextBlock Text="{Binding DiskSize}" FontSize="15" FontWeight="Bold" Margin="0,5,0,0"/>
                             <lvc:PieChart x:Name="uiDiscUsagePieChart" Width="600" Height="400" InitialRotation="-90" IsClockwise="True" HorizontalAlignment="Left" Margin="0,0,0,0" LegendPosition="Right"/>
                         </StackPanel>
@@ -183,30 +183,30 @@
                         <StackPanel Margin="20,20,0,0">
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                                 <Path Data="{DynamicResource IconGameSettingsLaunchOptions}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" Margin="0,1,0,0"/>
-                                <TextBlock Text="Launch Options" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock Text="启动选项" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
-                            <TextBlock Text="Here, you can customize your game launch settings, such as adding launch parameter or creating a desktop icon." FontSize="15" Margin="0,5,0,0"/>
-                            <TextBlock Text="Launch Executable" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
-                            <TextBlock Text="Select which executable should be started when you press the play button." FontSize="15" Margin="0,5,0,0"/>
+                            <TextBlock Text="在此你可以自定义游戏启动设置，例如添加启动参数或创建桌面图标。" FontSize="15" Margin="0,5,0,0"/>
+                            <TextBlock Text="启动可执行文件" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
+                            <TextBlock Text="选择按下播放按钮时应启动的可执行文件。" FontSize="15" Margin="0,5,0,0"/>
                             <ComboBox x:Name="uiCbExecutables" ItemsSource="{Binding Executables}" DisplayMemberPath="Value" Margin="0,10,20,0" SelectionChanged="Executable_SelectionChanged" DropDownOpened="ExecutableSelection_Opened"/>
-                            <TextBlock Text="Launch Parameter" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
-                            <TextBlock Text="Advanced Users can modify the launch parameters of the executable above here." FontSize="15" Margin="0,5,0,0"/>
-                            <TextBox Text="{Binding LaunchParameter,UpdateSourceTrigger=PropertyChanged}" LostFocus="LaunchParameter_Changed" mah:ControlsHelper.CornerRadius="5" mah:TextBoxHelper.Watermark="e.g. -fullscreen" BorderThickness="2" FontSize="17" Margin="0,10,20,0"/>
-                            <TextBlock Text="Desktop Icon" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
-                            <TextBlock Text="Your can press this button to create a desktop shortcut that starts the game via GameVault. Changed executable or  parameters   are updated immediately." FontSize="15" Margin="0,5,0,0" TextWrapping="Wrap"/>
-                            <local:IconButton Text="Create Desktop Icon" FontSize="15" Icon="{DynamicResource IconGameSettingsLink}" IconMargin="0,0,5,2" Width="180" Height="33" Margin="0,10,0,0" HorizontalAlignment="Left" Click="CreateDesktopShortcut_Click"/>
+                            <TextBlock Text="启动参数" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
+                            <TextBlock Text="高级用户可以在此修改上述可执行文件的启动参数。" FontSize="15" Margin="0,5,0,0"/>
+                            <TextBox Text="{Binding LaunchParameter,UpdateSourceTrigger=PropertyChanged}" LostFocus="LaunchParameter_Changed" mah:ControlsHelper.CornerRadius="5" mah:TextBoxHelper.Watermark="例如 -fullscreen" BorderThickness="2" FontSize="17" Margin="0,10,20,0"/>
+                            <TextBlock Text="桌面图标" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,20,0,0"/>
+                            <TextBlock Text="你可以点击此按钮创建通过 GameVault 启动游戏的桌面快捷方式。更改的可执行文件或参数会立即更新。" FontSize="15" Margin="0,5,0,0" TextWrapping="Wrap"/>
+                            <local:IconButton Text="创建桌面图标" FontSize="15" Icon="{DynamicResource IconGameSettingsLink}" IconMargin="0,0,5,2" Width="180" Height="33" Margin="0,10,0,0" HorizontalAlignment="Left" Click="CreateDesktopShortcut_Click"/>
                         </StackPanel>
                     </mah:MetroTabItem>
                     <mah:MetroTabItem>
                         <Grid Margin="0,20,0,0">
                             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
                                 <Path Data="{DynamicResource IconGameSettingsEditImages}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" Margin="0,1,0,0"/>
-                                <TextBlock Text="Edit Images" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock Text="编辑图片" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
-                            <TextBlock Text="Here, you can update the background and box images of your game." VerticalAlignment="Top" FontSize="15" Margin="10,35,0,0"/>
+                            <TextBlock Text="在此你可以更新游戏的背景和封面图片。" VerticalAlignment="Top" FontSize="15" Margin="10,35,0,0"/>
                             <Border CornerRadius="5" Margin="10,70,0,50" Width="425" HorizontalAlignment="Left" Background="{DynamicResource MahApps.Brushes.ThemeBackground2}">
                                 <StackPanel>
-                                    <TextBlock Text="Background" HorizontalAlignment="Center" FontSize="15" Margin="0,5,0,0"/>
+                                    <TextBlock Text="背景" HorizontalAlignment="Center" FontSize="15" Margin="0,5,0,0"/>
                                     <Border CornerRadius="5" BorderThickness="2" Margin="10" Height="380" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" Cursor="Hand" AllowDrop="True" Drop="Image_Drop" MouseLeftButtonUp="ChooseImage" Focusable="True" KeyDown="Image_Paste">
                                         <Border.Style>
                                             <Style TargetType="Border">
@@ -239,30 +239,30 @@
                                                 </Border>
                                             </Grid>
                                             <StackPanel HorizontalAlignment="Center" Margin="0,65,0,0">
-                                                <TextBlock Text="Click to Upload, Paste or Drag and Drop" FontWeight="Bold"/>
-                                                <TextBlock Text="JPG, PNG, GIF, TIF, ICO or BMP" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-                                                <TextBlock Text="For optimal display, use an image that is 1920px wide and 1080px high." FontSize="8" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                                <TextBlock Text="点击上传、粘贴或拖放" FontWeight="Bold"/>
+                                                <TextBlock Text="JPG, PNG, GIF, TIF, ICO 或 BMP" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                                                <TextBlock Text="为获得最佳显示效果，请使用 1920px 宽、1080px 高的图片。" FontSize="8" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </Border>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                         <Rectangle Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" Width="70" Height="2"/>
                                         <StackPanel Margin="10,0,10,0">
-                                            <TextBlock Text="OR" HorizontalAlignment="Center"/>
-                                            <TextBlock Text="Upload via URL" FontWeight="Bold"/>
+                                            <TextBlock Text="或者" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="通过 URL 上传" FontWeight="Bold"/>
                                         </StackPanel>
                                         <Rectangle Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" Width="70" Height="2"/>
                                     </StackPanel>
                                     <TextBox Margin="10" Height="28" mah:ControlsHelper.CornerRadius="5" BorderThickness="2" mah:TextBoxHelper.Watermark="https://example.com/example.png" TextChanged="BackgoundImageUrl_TextChanged"/>
                                     <Grid Margin="10,95,10,0">
-                                        <local:IconButton Text="Save" FontSize="15" Icon="{DynamicResource IconGameSettingsSave}" IconMargin="0,0,5,2" IsEnabled="{Binding BackgroundImageChanged}" Width="115" Height="33" HorizontalAlignment="Right" Click="BackgroundImage_Save"/>
-                                        <local:IconButton Text="Find Images" FontSize="15" Icon="{DynamicResource IconGameSettingsGoogle}" IconMargin="0,0,5,2" HorizontalAlignment="Left" Height="33" Width="115" Tag="Game Background Art" Click="FindImages_Click"/>
+                                        <local:IconButton Text="保存" FontSize="15" Icon="{DynamicResource IconGameSettingsSave}" IconMargin="0,0,5,2" IsEnabled="{Binding BackgroundImageChanged}" Width="115" Height="33" HorizontalAlignment="Right" Click="BackgroundImage_Save"/>
+                                        <local:IconButton Text="查找图片" FontSize="15" Icon="{DynamicResource IconGameSettingsGoogle}" IconMargin="0,0,5,2" HorizontalAlignment="Left" Height="33" Width="115" Tag="游戏背景图" Click="FindImages_Click"/>
                                     </Grid>
                                 </StackPanel>
                             </Border>
                             <Border CornerRadius="5" Margin="0,70,10,50" Width="425" HorizontalAlignment="Right" Background="{DynamicResource MahApps.Brushes.ThemeBackground2}">
                                 <StackPanel>
-                                    <TextBlock Text="Box Art" HorizontalAlignment="Center" FontSize="15" Margin="0,5,0,0"/>
+                                    <TextBlock Text="封面" HorizontalAlignment="Center" FontSize="15" Margin="0,5,0,0"/>
                                     <Border CornerRadius="5" BorderThickness="2" Margin="10" Height="380" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" Cursor="Hand" AllowDrop="True" Drop="Image_Drop" MouseLeftButtonUp="ChooseImage" Focusable="True" KeyDown="Image_Paste" Tag="box">
                                         <Border.Style>
                                             <Style TargetType="Border">
@@ -296,24 +296,24 @@
                                                 </Border>
                                             </Grid>
                                             <StackPanel HorizontalAlignment="Center" Margin="0,50,0,0">
-                                                <TextBlock Text="Click to Upload, Paste or Drag and Drop" FontWeight="Bold"/>
-                                                <TextBlock Text="JPG, PNG, GIF, TIF, ICO or BMP" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-                                                <TextBlock Text="For optimal display, use an image that is 600px wide and 900px high." FontSize="8" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                                <TextBlock Text="点击上传、粘贴或拖放" FontWeight="Bold"/>
+                                                <TextBlock Text="JPG, PNG, GIF, TIF, ICO 或 BMP" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                                                <TextBlock Text="为获得最佳显示效果，请使用 600px 宽、900px 高的图片。" FontSize="8" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </Border>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                         <Rectangle Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" Width="70" Height="2"/>
                                         <StackPanel Margin="10,0,10,0">
-                                            <TextBlock Text="OR" HorizontalAlignment="Center"/>
-                                            <TextBlock Text="Upload via URL" FontWeight="Bold"/>
+                                            <TextBlock Text="或者" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="通过 URL 上传" FontWeight="Bold"/>
                                         </StackPanel>
                                         <Rectangle Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" Width="70" Height="2"/>
                                     </StackPanel>
                                     <TextBox Margin="10" Height="28" mah:ControlsHelper.CornerRadius="5" BorderThickness="2" mah:TextBoxHelper.Watermark="https://example.com/example.png" TextChanged="BoxImageUrl_TextChanged"/>
                                     <Grid Margin="10,95,10,0">
-                                        <local:IconButton Text="Save" FontSize="15" Icon="{DynamicResource IconGameSettingsSave}" IconMargin="0,0,5,2" IsEnabled="{Binding GameCoverImageChanged}" Width="115" Height="33" HorizontalAlignment="Right" Click="BoxImage_Save"/>
-                                        <local:IconButton Text="Find Images" FontSize="15" Icon="{DynamicResource IconGameSettingsGoogle}" IconMargin="0,0,5,2" HorizontalAlignment="Left" Height="33" Width="115" Tag="Game Box Art" Click="FindImages_Click"/>
+                                        <local:IconButton Text="保存" FontSize="15" Icon="{DynamicResource IconGameSettingsSave}" IconMargin="0,0,5,2" IsEnabled="{Binding GameCoverImageChanged}" Width="115" Height="33" HorizontalAlignment="Right" Click="BoxImage_Save"/>
+                                        <local:IconButton Text="查找图片" FontSize="15" Icon="{DynamicResource IconGameSettingsGoogle}" IconMargin="0,0,5,2" HorizontalAlignment="Left" Height="33" Width="115" Tag="游戏封面图" Click="FindImages_Click"/>
                                     </Grid>
                                 </StackPanel>
                             </Border>
@@ -323,10 +323,10 @@
                         <StackPanel Margin="20,20,0,0" IsEnabled="{Binding MetadataProvidersLoaded}">
                             <StackPanel Orientation="Horizontal">
                                 <Path Data="{DynamicResource IconDatabase}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" VerticalAlignment="Center"/>
-                                <TextBlock Text="Metadata" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock Text="元数据" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
-                            <TextBlock Text="Here, you can remap your games to other games of metadata providers on this server or refresh their information" FontSize="15"  Margin="0,5,0,0"/>
-                            <TextBlock Text="Metadata Providers" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,0" HorizontalAlignment="Left"/>
+                            <TextBlock Text="在此你可以将游戏重新映射到此服务器上其他元数据提供商的游戏，或刷新其信息" FontSize="15"  Margin="0,5,0,0"/>
+                            <TextBlock Text="元数据提供商" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,0" HorizontalAlignment="Left"/>
                             <ListBox ItemsSource="{Binding MetadataProviders}" SelectedIndex="{Binding SelectedMetadataProviderIndex}" HorizontalAlignment="Left"  Margin="0,10,0,0" Background="Transparent">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem" BasedOn="{StaticResource MahApps.Styles.ListBoxItem}">
@@ -379,7 +379,7 @@
                                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                             <Grid>
                                                 <local:CacheImage x:Name="uiImgCurrentMergedGame" ImageCacheType="GameCover" Data="{Binding Game}" Height="120" Width="90" CornerRadius="5"/>
-                                                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1" Cursor="Hand" Opacity="0.7" Margin="0,0,4,5" ToolTip="Copy Image to Clipboard" Click="CopyImageToClipboard_Click">
+                                                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1" Cursor="Hand" Opacity="0.7" Margin="0,0,4,5" ToolTip="复制图片到剪贴板" Click="CopyImageToClipboard_Click">
                                                     <Button.Style>
                                                         <Style TargetType="Button" BasedOn="{StaticResource ButtonWrapper}">
                                                             <Style.Triggers>
@@ -409,21 +409,21 @@
                                                 </Button>
                                             </Grid>
                                             <StackPanel Margin="5,0,0,0">
-                                                <TextBlock Text="File" FontSize="15" FontWeight="Bold"/>
+                                                <TextBlock Text="文件" FontSize="15" FontWeight="Bold"/>
                                                 <TextBlock Text="{Binding Path=Game.Path}" FontSize="15" Width="250" ToolTip="{Binding Path=Game.Path}" TextTrimming="CharacterEllipsis"/>
-                                                <TextBlock Text="Release Date" FontSize="15" FontWeight="Bold"/>
+                                                <TextBlock Text="发行日期" FontSize="15" FontWeight="Bold"/>
                                                 <TextBlock Text="{Binding Path=Game.ReleaseDate,StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="15"/>
-                                                <TextBlock Text="Added" FontSize="15" FontWeight="Bold"/>
+                                                <TextBlock Text="添加日期" FontSize="15" FontWeight="Bold"/>
                                                 <TextBlock Text="{Binding Path=Game.CreatedAt,StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="15"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </StackPanel>
                                     <StackPanel Margin="60,0,0,0">
-                                        <TextBlock Text="Mapped Game" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,0,0,0"/>
+                                        <TextBlock Text="已映射游戏" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,0,0,0"/>
                                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                             <Grid>
                                                 <local:CacheImage x:Name="uiImgCurrentShownMappedGame" DoNotCache="True" ImageCacheType="GameCover" Data="{Binding CurrentShownMappedGame}" Height="120" Width="90" CornerRadius="5"/>
-                                                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1" Cursor="Hand" Opacity="0.7" Margin="0,0,4,5" ToolTip="Copy Image to Clipboard" Click="CopyImageToClipboard_Click" Tag="CurrentShownMappedGame">
+                                                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1" Cursor="Hand" Opacity="0.7" Margin="0,0,4,5" ToolTip="复制图片到剪贴板" Click="CopyImageToClipboard_Click" Tag="CurrentShownMappedGame">
                                                     <Button.Style>
                                                         <Style TargetType="Button" BasedOn="{StaticResource ButtonWrapper}">
                                                             <Style.Triggers>
@@ -453,40 +453,40 @@
                                                 </Button>
                                             </Grid>
                                             <StackPanel Margin="5,0,0,0">
-                                                <TextBlock Text="Title" FontSize="15" FontWeight="Bold"/>
+                                                <TextBlock Text="标题" FontSize="15" FontWeight="Bold"/>
                                                 <TextBlock FontSize="15" Width="200" TextTrimming="CharacterEllipsis" HorizontalAlignment="Left" ToolTip="{Binding Path=CurrentShownMappedGame.Title}">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Setter Property="Text" Value="{Binding Path=CurrentShownMappedGame.Title}"/>
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding Path=CurrentShownMappedGame.Title}" Value="{x:Null}">
-                                                                    <Setter Property="Text" Value="N/A"/>
+                                                                    <Setter Property="Text" Value="无"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
                                                 </TextBlock>
-                                                <TextBlock Text="Release Date" FontSize="15" FontWeight="Bold"/>
+                                                <TextBlock Text="发行日期" FontSize="15" FontWeight="Bold"/>
                                                 <TextBlock FontSize="15">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Setter Property="Text" Value="{Binding Path=CurrentShownMappedGame.ReleaseDate,StringFormat='{}{0:dd/MM/yyyy}'}"/>
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding Path=CurrentShownMappedGame.ReleaseDate}" Value="{x:Null}">
-                                                                    <Setter Property="Text" Value="N/A"/>
+                                                                    <Setter Property="Text" Value="无"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
                                                 </TextBlock>
-                                                <TextBlock Text="Last Cached" FontSize="15" FontWeight="Bold"/>
+                                                <TextBlock Text="最后缓存时间" FontSize="15" FontWeight="Bold"/>
                                                 <TextBlock FontSize="15">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Setter Property="Text" Value="{Binding Path=CurrentShownMappedGame.UpdatedAt,StringFormat='{}{0:dd/MM/yyyy}'}"/>
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding Path=CurrentShownMappedGame.UpdatedAt}" Value="{x:Null}">
-                                                                    <Setter Property="Text" Value="N/A"/>
+                                                                    <Setter Property="Text" Value="无"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -514,15 +514,15 @@
                                     </StackPanel.Style>
                                     <StackPanel>
                                         <mah:NumericUpDown x:Name="uiProviderPriority" Value="1" ButtonsAlignment="Opposite" SwitchUpDownButtons="True" TextAlignment="Center" BorderThickness="0"/>
-                                        <local:IconButton Text="Save Priority" FontSize="12" Icon="{DynamicResource IconGameSettingsSave}" IconScale="0.7" IconMargin="0,0,1,0" Height="23" Margin="0,0,0,0" Click="SavePriority_Click"/>
+                                        <local:IconButton Text="保存优先级" FontSize="12" Icon="{DynamicResource IconGameSettingsSave}" IconScale="0.7" IconMargin="0,0,1,0" Height="23" Margin="0,0,0,0" Click="SavePriority_Click"/>
                                     </StackPanel>
-                                    <local:IconButton Text="Unmap" FontSize="15" Icon="{DynamicResource IconGameSettingsUnlinked}" IconMargin="0,0,5,2" Width="140" Height="33" Margin="0,15,0,15" Click="Unmap_Click"/>
-                                    <local:IconButton Text="Recache Game" FontSize="15" Icon="{DynamicResource IconReload}" IconMargin="0,0,5,2" Width="140" Height="33" Click="Recache_Click"/>
+                                    <local:IconButton Text="取消映射" FontSize="15" Icon="{DynamicResource IconGameSettingsUnlinked}" IconMargin="0,0,5,2" Width="140" Height="33" Margin="0,15,0,15" Click="Unmap_Click"/>
+                                    <local:IconButton Text="重新缓存游戏" FontSize="15" Icon="{DynamicResource IconReload}" IconMargin="0,0,5,2" Width="140" Height="33" Click="Recache_Click"/>
                                 </StackPanel>
                             </Grid>
                             <StackPanel>
-                                <TextBlock Text="Remap Game" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,10,0,0"/>
-                                <TextBlock Text="Is the mapped game incorrect or missing? Manually search the provider and remap it here." TextWrapping="Wrap" FontSize="15" Margin="0,5,0,0"/>
+                                <TextBlock Text="重新映射游戏" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,10,0,0"/>
+                                <TextBlock Text="映射的游戏不正确或缺失？手动搜索提供商并在此重新映射。" TextWrapping="Wrap" FontSize="15" Margin="0,5,0,0"/>
                                 <TextBox Style="{DynamicResource SearchTextBox}" Height="27" Margin="0,10,20,0" TextChanged="ProviderGameSearch_TextChanged"/>
                                 <ItemsControl ItemsSource="{Binding RemapSearchResults}" Height="370" Margin="0,10,20,0" HorizontalAlignment="Stretch">
                                     <ItemsControl.ItemsPanel>
@@ -550,7 +550,7 @@
                                                     <TextBlock Text="{Binding Path=ReleaseDate,StringFormat='{}{0:MM/dd/yyyy}'}" Width="160" FontSize="13" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="90,20,0,0"/>
                                                     <TextBlock Text="{Binding Path=Description}" Width="640" Height="70" FontSize="10" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="90,40,0,0"/>
                                                     <TextBlock Text="{Binding Path=ProviderDataId,StringFormat='{}ID: {0}'}" FontSize="13" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-                                                    <local:IconButton Text="Remap" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="55" Height="25" FontSize="12" Margin="0,0,0,2" Click="GameRemap_Click"/>
+                                                    <local:IconButton Text="重新映射" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="55" Height="25" FontSize="12" Margin="0,0,0,2" Click="GameRemap_Click"/>
                                                 </Grid>
                                             </Border>
                                         </DataTemplate>
@@ -565,21 +565,21 @@
                         <StackPanel Margin="20,20,20,0">
                             <StackPanel Orientation="Horizontal">
                                 <Path Data="{DynamicResource IconGameSettingsEditDetails}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" VerticalAlignment="Center"/>
-                                <TextBlock Text="Custom Metadata" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock Text="自定义元数据" FontSize="20" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
                             <Grid>
-                                <TextBlock Text="Overwrite any existing metadata with custom values. Fields left blank will remain the same." TextWrapping="Wrap" FontSize="15" Margin="0,5,0,0"/>
-                                <local:IconButton Kind="Danger" Text="Wipe Custom Metadata" FontSize="15" Icon="{StaticResource IconCleanup}" IconScale="0.08" IconMargin="-110,-100,-105,-100" Width="200" Height="30" HorizontalAlignment="Right" Click="ClearUserData_Click"/>
+                                <TextBlock Text="用自定义值覆盖现有元数据。留空的字段将保持不变。" TextWrapping="Wrap" FontSize="15" Margin="0,5,0,0"/>
+                                <local:IconButton Kind="Danger" Text="清除自定义元数据" FontSize="15" Icon="{StaticResource IconCleanup}" IconScale="0.08" IconMargin="-110,-100,-105,-100" Width="200" Height="30" HorizontalAlignment="Right" Click="ClearUserData_Click"/>
                             </Grid>
                             <ScrollViewer Background="Transparent" Height="650">
                                 <StackPanel>
-                                    <TextBlock Text="Title" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="标题" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <TextBox TextWrapping="Wrap" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.Title}" mah:TextBoxHelper.UseFloatingWatermark="True" Text="{Binding UpdateGame.UserMetadata.Title,TargetNullValue='',FallbackValue={x:Null}}" mah:ControlsHelper.CornerRadius="5"/>
-                                    <TextBlock Text="Sorting Title" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="排序标题" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <TextBox TextWrapping="Wrap" mah:TextBoxHelper.Watermark="{Binding Game.SortTitle}" mah:TextBoxHelper.UseFloatingWatermark="True" Text="{Binding UpdateGame.UserMetadata.SortTitle,TargetNullValue='',FallbackValue={x:Null}}" mah:ControlsHelper.CornerRadius="5"/>
                                     <Grid>
-                                        <TextBlock Text="Description" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
-                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Paste Current Description" Click="KeepData_Click" Tag="description">
+                                        <TextBlock Text="描述" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="粘贴当前描述" Click="KeepData_Click" Tag="description">
                                             <Grid Style="{DynamicResource HoverEffect}"   Background="Transparent">
                                                 <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                                                     <Path.RenderTransform>
@@ -601,8 +601,8 @@
                                         <GridSplitter Grid.Row="1" Height="2" Margin="5,0,5,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="Transparent"/>
                                     </Grid>
                                     <Grid>
-                                        <TextBlock Text="Notes" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
-                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Paste Current Notes" Click="KeepData_Click" Tag="notes">
+                                        <TextBlock Text="备注" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="粘贴当前备注" Click="KeepData_Click" Tag="notes">
                                             <Grid Style="{DynamicResource HoverEffect}"   Background="Transparent">
                                                 <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                                                     <Path.RenderTransform>
@@ -624,11 +624,11 @@
                                         <GridSplitter Grid.Row="1" Height="2" Margin="5,0,5,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="Transparent"/>
                                     </Grid>
                                     <UniformGrid Rows="1">
-                                        <TextBlock Text="Avg. Playtime Minutes" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
-                                        <TextBlock Text="Age Rating" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="50,5,0,5"/>
-                                        <TextBlock Text="Release Date" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="50,5,0,5"/>
-                                        <TextBlock Text="Rating" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="50,5,0,5"/>
-                                        <TextBlock Text="Early Access" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="50,5,0,5"/>
+                                        <TextBlock Text="平均游玩时长（分钟）" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                        <TextBlock Text="年龄分级" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="50,5,0,5"/>
+                                        <TextBlock Text="发行日期" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="50,5,0,5"/>
+                                        <TextBlock Text="评分" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="50,5,0,5"/>
+                                        <TextBlock Text="抢先体验" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="50,5,0,5"/>
                                     </UniformGrid>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                         <TextBox Width="100" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.AveragePlaytime}" mah:TextBoxHelper.UseFloatingWatermark="True" Text="{Binding UpdateGame.UserMetadata.AveragePlaytime,TargetNullValue='',FallbackValue={x:Null}}" mah:ControlsHelper.CornerRadius="5"/>
@@ -658,26 +658,26 @@
                                         </Grid>
                                     </StackPanel>
 
-                                    <TextBlock Text="Default Launch Executable" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="默认启动可执行文件" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <TextBox Text="{Binding UpdateGame.UserMetadata.LaunchExecutable,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.LaunchExecutable}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                    <TextBlock Text="Default Launch Parameters" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="默认启动参数" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <TextBox Text="{Binding UpdateGame.UserMetadata.LaunchParameters,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.LaunchParameters}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                    <TextBlock Text="Default Installer Executable" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="默认安装可执行文件" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <TextBox Text="{Binding UpdateGame.UserMetadata.InstallerExecutable,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.InstallerExecutable}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                    <TextBlock Text="Default Installer Parameters" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="默认安装参数" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <TextBox Text="{Binding UpdateGame.UserMetadata.InstallerParameters,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.InstallerParameters}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
 
-                                    <TextBlock Text="Default Uninstaller Executable" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="默认卸载可执行文件" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <TextBox Text="{Binding UpdateGame.UserMetadata.UninstallerExecutable,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.UninstallerExecutable}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                    <TextBlock Text="Default Uninstaller Parameters" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="默认卸载参数" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <TextBox Text="{Binding UpdateGame.UserMetadata.UninstallerParameters,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.UninstallerParameters}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
 
-                                    <TextBlock Text="Website URLs" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="网站链接" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <TextBox Text="{Binding UpdateGame.UserMetadata.UrlWebsites,Converter={StaticResource stringToArrayConv},ConverterParameter=',',Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.WebsiteNames}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                    <TextBlock Text="Genres" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="类型" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <Grid>
                                         <TextBox Text="{Binding UpdateGame.UserMetadata.Genres,Converter={StaticResource stringToArrayConv},ConverterParameter=',',Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.GenreNames}" Margin="0,0,40,0" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Paste Current Genres" Click="KeepData_Click" Tag="genre">
+                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="粘贴当前类型" Click="KeepData_Click" Tag="genre">
                                             <Grid Style="{DynamicResource HoverEffect}"   Background="Transparent">
                                                 <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                                                     <Path.RenderTransform>
@@ -690,10 +690,10 @@
                                             </Grid>
                                         </Button>
                                     </Grid>
-                                    <TextBlock Text="Tags" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="标签" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <Grid>
                                         <TextBox Text="{Binding UpdateGame.UserMetadata.Tags,Converter={StaticResource stringToArrayConv},ConverterParameter=',',Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.TagNames}" Margin="0,0,40,0" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Paste Current Tags" Click="KeepData_Click" Tag="tag">
+                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="粘贴当前标签" Click="KeepData_Click" Tag="tag">
                                             <Grid Style="{DynamicResource HoverEffect}"   Background="Transparent">
                                                 <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                                                     <Path.RenderTransform>
@@ -706,10 +706,10 @@
                                             </Grid>
                                         </Button>
                                     </Grid>
-                                    <TextBlock Text="Publishers" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="发行商" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <Grid>
                                         <TextBox Text="{Binding UpdateGame.UserMetadata.Publishers,Converter={StaticResource stringToArrayConv},ConverterParameter=',',Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.PublisherNames}" Margin="0,0,40,0" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Paste Current Publishers" Click="KeepData_Click" Tag="publisher">
+                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="粘贴当前发行商" Click="KeepData_Click" Tag="publisher">
                                             <Grid Style="{DynamicResource HoverEffect}"   Background="Transparent">
                                                 <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                                                     <Path.RenderTransform>
@@ -722,10 +722,10 @@
                                             </Grid>
                                         </Button>
                                     </Grid>
-                                    <TextBlock Text="Developers" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="开发商" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <Grid>
                                         <TextBox Text="{Binding UpdateGame.UserMetadata.Developers,Converter={StaticResource stringToArrayConv},ConverterParameter=',',Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.DeveloperNames}" Margin="0,0,40,0" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Paste Current Developers" Click="KeepData_Click" Tag="developer">
+                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="粘贴当前开发商" Click="KeepData_Click" Tag="developer">
                                             <Grid Style="{DynamicResource HoverEffect}"   Background="Transparent">
                                                 <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                                                     <Path.RenderTransform>
@@ -738,10 +738,10 @@
                                             </Grid>
                                         </Button>
                                     </Grid>
-                                    <TextBlock Text="Trailer URLs" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="预告片链接" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <Grid>
                                         <TextBox Text="{Binding UpdateGame.UserMetadata.UrlTrailers,Converter={StaticResource stringToArrayConv},ConverterParameter=',',Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.TrailerNames}" Margin="0,0,40,0" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Paste Current Trailer URLs" Click="KeepData_Click" Tag="trailer">
+                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="粘贴当前预告片链接" Click="KeepData_Click" Tag="trailer">
                                             <Grid Style="{DynamicResource HoverEffect}"   Background="Transparent">
                                                 <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                                                     <Path.RenderTransform>
@@ -754,10 +754,10 @@
                                             </Grid>
                                         </Button>
                                     </Grid>
-                                    <TextBlock Text="Gameplay URLs" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="游玩视频链接" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <Grid>
                                         <TextBox Text="{Binding UpdateGame.UserMetadata.UrlGameplays,Converter={StaticResource stringToArrayConv},ConverterParameter=',',Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.GameplayNames}" Margin="0,0,40,0" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Paste Current Gameplay URLs" Click="KeepData_Click" Tag="gameplays">
+                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="粘贴当前游玩视频链接" Click="KeepData_Click" Tag="gameplays">
                                             <Grid Style="{DynamicResource HoverEffect}"   Background="Transparent">
                                                 <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                                                     <Path.RenderTransform>
@@ -770,10 +770,10 @@
                                             </Grid>
                                         </Button>
                                     </Grid>
-                                    <TextBlock Text="Screenshot URLs" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
+                                    <TextBlock Text="截图链接" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0,5,0,5"/>
                                     <Grid>
                                         <TextBox Text="{Binding UpdateGame.UserMetadata.UrlScreenshots,Converter={StaticResource stringToArrayConv},ConverterParameter=',',Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" mah:TextBoxHelper.Watermark="{Binding Game.Metadata.ScreenshotNames}" Margin="0,0,40,0" mah:TextBoxHelper.UseFloatingWatermark="True" mah:ControlsHelper.CornerRadius="5"/>
-                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Paste Current Screenshot URLs" Click="KeepData_Click" Tag="screenshots">
+                                        <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="粘贴当前截图链接" Click="KeepData_Click" Tag="screenshots">
                                             <Grid Style="{DynamicResource HoverEffect}"   Background="Transparent">
                                                 <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                                                     <Path.RenderTransform>
@@ -788,7 +788,7 @@
                                     </Grid>
                                 </StackPanel>
                             </ScrollViewer>
-                            <local:IconButton Text="Save" FontSize="15" Icon="{DynamicResource IconGameSettingsSave}" IconMargin="0,0,5,2" IsEnabled="true" Width="115" Height="33" Margin="0,10,0,0" HorizontalAlignment="Right" Click="SaveGameDetails_Click"/>
+                            <local:IconButton Text="保存" FontSize="15" Icon="{DynamicResource IconGameSettingsSave}" IconMargin="0,0,5,2" IsEnabled="true" Width="115" Height="33" Margin="0,10,0,0" HorizontalAlignment="Right" Click="SaveGameDetails_Click"/>
                         </StackPanel>
                     </mah:MetroTabItem>
                 </mah:MetroAnimatedTabControl>

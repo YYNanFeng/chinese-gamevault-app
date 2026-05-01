@@ -82,24 +82,24 @@
                     </Grid.RenderTransform>
                 </Grid>
             </Button>
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,10,0,0" Text="{Binding State,StringFormat={}State: {0}}" ToolTip="{Binding State}" FontSize="4" Width="122"/>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,10,0,0" Text="{Binding State,StringFormat={}状态: {0}}" ToolTip="{Binding State}" FontSize="4" Width="122"/>
 
-            <local:IconButton Text="Retry" FontSize="5" Icon="{StaticResource IconReload}" IconScale="0.3" IconMargin="-9,-5.5,-5,-5" Visibility="{Binding DownloadFailedVisibility}" CornerRadius="2" Height="9" Width="34" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="64,18.3,0,0" ToolTip="Download Game" Click="RetryDownload_Click"/>
+            <local:IconButton Text="重试" FontSize="5" Icon="{StaticResource IconReload}" IconScale="0.3" IconMargin="-9,-5.5,-5,-5" Visibility="{Binding DownloadFailedVisibility}" CornerRadius="2" Height="9" Width="34" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="64,18.3,0,0" ToolTip="下载游戏" Click="RetryDownload_Click"/>
             <TextBlock Visibility="{Binding DownloadUIVisibility}" Text="{Binding DownloadInfo}" FontSize="4" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="64,18,0,0" Width="115"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,3,0">
-                <local:IconButton Kind="Danger" Text="Cancel" FontSize="4" Visibility="{Binding DownloadUIVisibility}" CornerRadius="2" Height="8" Width="22" ToolTip="Cancel Download" Click="CancelDownload_Click"/>
+                <local:IconButton Kind="Danger" Text="取消" FontSize="4" Visibility="{Binding DownloadUIVisibility}" CornerRadius="2" Height="8" Width="22" ToolTip="取消下载" Click="CancelDownload_Click"/>
                 <local:IconButton IsEnabled="{Binding IsDownloadResumed}" FontSize="4" IconScale="0.3" IconMargin="-8,-6.3,-4.5,-5" Visibility="{Binding DownloadUIVisibility}" CornerRadius="2" Height="8" Width="22" Margin="2,0,0,0" Click="PauseResume_Click">
                     <local:IconButton.Style>
                         <Style TargetType="local:IconButton" BasedOn="{StaticResource {x:Type local:IconButton}}">
-                            <Setter Property="Text" Value="Pause"/>
+                            <Setter Property="Text" Value="暂停"/>
                             <Setter Property="Icon" Value="{StaticResource IconPause}"/>
-                            <Setter Property="ToolTip" Value="Pause Download"/>
+                            <Setter Property="ToolTip" Value="暂停下载"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding IsDownloadPaused}" Value="True">
-                                    <Setter Property="Text" Value="Resume"/>
+                                    <Setter Property="Text" Value="继续"/>
                                     <Setter Property="Icon" Value="{StaticResource IconPlay}"/>
-                                    <Setter Property="ToolTip" Value="Resume Download"/>
+                                    <Setter Property="ToolTip" Value="继续下载"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -108,12 +108,12 @@
             </StackPanel>
             <ProgressBar Visibility="{Binding DownloadUIVisibility}" VerticalAlignment="Top" Margin="64,24,3,52"  Minimum="0" Maximum="100" Value="{Binding GameDownloadProgress}" BorderThickness="0"/>
 
-            <local:IconButton x:Name="uiBtnExtract" IsEnabled="False" Text="Extract" FontSize="5" Icon="{StaticResource IconExtract}" IconScale="0.3" IconMargin="-9,-6.5,-5,-6" Height="9" Width="34" CornerRadius="2" Visibility="{Binding ExtractionUIVisibility,Converter={StaticResource visConv}}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="64,42.4,0,0" ToolTip="Extract Game" Click="Extract_Click"/>
+            <local:IconButton x:Name="uiBtnExtract" IsEnabled="False" Text="解压" FontSize="5" Icon="{StaticResource IconExtract}" IconScale="0.3" IconMargin="-9,-6.5,-5,-6" Height="9" Width="34" CornerRadius="2" Visibility="{Binding ExtractionUIVisibility,Converter={StaticResource visConv}}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="64,42.4,0,0" ToolTip="解压游戏" Click="Extract_Click"/>
 
 
             <TextBlock Visibility="{Binding ExtractionUIVisibility}" Text="{Binding ExtractionInfo}" FontSize="4" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="64,41,0,0" Width="115"/>
 
-            <local:IconButton Kind="Danger" Text="Cancel" FontSize="4" Visibility="{Binding ExtractionUIVisibility}" CornerRadius="2" Height="8" Width="22" HorizontalAlignment="Right" Margin="0,34,3,0" Click="CancelExtraction_Click"/>
+            <local:IconButton Kind="Danger" Text="取消" FontSize="4" Visibility="{Binding ExtractionUIVisibility}" CornerRadius="2" Height="8" Width="22" HorizontalAlignment="Right" Margin="0,34,3,0" Click="CancelExtraction_Click"/>
             <ProgressBar Visibility="{Binding ExtractionUIVisibility}" VerticalAlignment="Top" Margin="64,47,3,29"  Minimum="0" Maximum="100" Value="{Binding GameExtractionProgress}" BorderThickness="0"/>
 
 
@@ -155,7 +155,7 @@
                 </Ellipse>
             </StackPanel>
             <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="64,62,1,0">
-                <local:IconButton x:Name="uiBtnInstall" Kind="Primary" IsEnabled="False" Text="Install" FontSize="5" Icon="{StaticResource IconInstalledGamesSettings}" IconScale="0.29" IconMargin="-9,-7,-5.5,-7" CornerRadius="2" Height="9" Width="34" ToolTip="Install Game" Click="OpenInstallOptions_Click">
+                <local:IconButton x:Name="uiBtnInstall" Kind="Primary" IsEnabled="False" Text="安装" FontSize="5" Icon="{StaticResource IconInstalledGamesSettings}" IconScale="0.29" IconMargin="-9,-7,-5.5,-7" CornerRadius="2" Height="9" Width="34" ToolTip="安装游戏" Click="OpenInstallOptions_Click">
                     <local:IconButton.Style>
                         <Style TargetType="local:IconButton" BasedOn="{StaticResource {x:Type local:IconButton}}">
                             <Setter Property="Visibility" Value="Visible"/>
@@ -167,7 +167,7 @@
                         </Style>
                     </local:IconButton.Style>
                 </local:IconButton>
-                <local:IconButton Kind="Primary" Text="Go to Game" FontSize="5" CornerRadius="2" Height="9" Width="34" Click="GoToGame_Click">
+                <local:IconButton Kind="Primary" Text="前往游戏" FontSize="5" CornerRadius="2" Height="9" Width="34" Click="GoToGame_Click">
                     <local:IconButton.Style>
                         <Style TargetType="local:IconButton" BasedOn="{StaticResource {x:Type local:IconButton}}">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -196,17 +196,17 @@
                     <Border Background="Gainsboro" Width="48" CornerRadius="2" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="1">
                         <TextBlock Text="{Binding Path=Game.Type,Converter={StaticResource enumDescConv}}" FontSize="4" Foreground="#FF424242" HorizontalAlignment="Center"/>
                     </Border>
-                    <TextBlock Text="To install this game, please follow the steps below:" FontWeight="Bold" Margin="0,10,0,0" FontSize="4"/>
+                    <TextBlock Text="要安装此游戏，请按照以下步骤操作：" FontWeight="Bold" Margin="0,10,0,0" FontSize="4"/>
 
 
-                    <TextBlock FontSize="4" TextWrapping="Wrap" Margin="0,15,0,0" Text="1. Pick the correct installer from the dropdown menu below."/>
+                    <TextBlock FontSize="4" TextWrapping="Wrap" Margin="0,15,0,0" Text="1. 从下面的下拉菜单中选择正确的安装程序。"/>
                     <Viewbox Height="8" Margin="0,22,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                         <ComboBox x:Name="uiCbSetupExecutable" DisplayMemberPath="Key"/>
                     </Viewbox>
-                    <TextBlock Text="2. Hit the 'Install' button to launch the games installer." Margin="0,32,0,0" FontSize="4"/>
+                    <TextBlock Text="2. 点击「安装」按钮启动游戏安装程序。" Margin="0,32,0,0" FontSize="4"/>
                     <TextBlock Text="3. Go through the game's setup process." Margin="0,37,0,0" FontSize="4" />
-                    <TextBlock Text="Make sure to select this folder as the installers destination:" Margin="4,42,0,0" FontSize="4" />
-                    <Border Background="Gainsboro" CornerRadius="2" Margin="0,49,1,0"  VerticalAlignment="Top" Padding="1" Cursor="Hand" ToolTip="Copy to clipboard" MouseLeftButtonUp="CopyInstallPathToClipboard_Click">
+                    <TextBlock Text="确保选择此文件夹作为安装目标：" Margin="4,42,0,0" FontSize="4" />
+                    <Border Background="Gainsboro" CornerRadius="2" Margin="0,49,1,0"  VerticalAlignment="Top" Padding="1" Cursor="Hand" ToolTip="复制到剪贴板" MouseLeftButtonUp="CopyInstallPathToClipboard_Click">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Style.Triggers>
@@ -219,7 +219,7 @@
                         <TextBlock Text="{Binding InstallPath}" FontSize="3" IsHitTestVisible="False" Foreground="#FF424242" HorizontalAlignment="Left"/>
                     </Border>
 
-                    <local:IconButton x:Name="uiBtnInstallSetup" Kind="Primary" Text="Install" FontSize="5" Icon="{StaticResource IconInstalledGamesSettings}" IconScale="0.29" IconMargin="-8,-7,-5.5,-7" CornerRadius="2" Height="9" Width="34" BorderThickness="0.2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,1,0" Click="Install_Click">
+                    <local:IconButton x:Name="uiBtnInstallSetup" Kind="Primary" Text="安装" FontSize="5" Icon="{StaticResource IconInstalledGamesSettings}" IconScale="0.29" IconMargin="-8,-7,-5.5,-7" CornerRadius="2" Height="9" Width="34" BorderThickness="0.2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,1,0" Click="Install_Click">
                         <local:IconButton.Style>
                             <Style TargetType="{x:Type local:IconButton}" BasedOn="{StaticResource {x:Type local:IconButton}}">
                                 <Style.Triggers>
@@ -249,11 +249,11 @@
                     <Border Background="Gainsboro" Width="48" CornerRadius="2" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="1">
                         <TextBlock Text="{Binding Path=Game.Type,Converter={StaticResource enumDescConv}}" FontSize="4" Foreground="#FF424242" HorizontalAlignment="Center"/>
                     </Border>
-                    <TextBlock Text="To install this game, please follow the steps below:" FontWeight="Bold" Margin="0,10,0,0" FontSize="4"/>
+                    <TextBlock Text="要安装此游戏，请按照以下步骤操作：" FontWeight="Bold" Margin="0,10,0,0" FontSize="4"/>
 
-                    <TextBlock FontSize="4" TextWrapping="Wrap" Text="This is a Portable Game, so there's no need for any setup. Once you click 'Install', the files will be automatically moved to the installation folder." MaxWidth="126" Margin="0,18,0,0"/>
+                    <TextBlock FontSize="4" TextWrapping="Wrap" Text="这是一个便携版游戏，无需安装设置。点击「安装」后，文件将自动移动到安装文件夹。" MaxWidth="126" Margin="0,18,0,0"/>
 
-                    <local:IconButton x:Name="uiBtnInstallPortable" Kind="Primary" Text="Install" FontSize="5" Icon="{StaticResource IconInstalledGamesSettings}" IconScale="0.29" IconMargin="-8,-7,-5.5,-7" CornerRadius="2" Height="9" Width="34" BorderThickness="0.2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,1,0" Click="Install_Click"/>
+                    <local:IconButton x:Name="uiBtnInstallPortable" Kind="Primary" Text="安装" FontSize="5" Icon="{StaticResource IconInstalledGamesSettings}" IconScale="0.29" IconMargin="-8,-7,-5.5,-7" CornerRadius="2" Height="9" Width="34" BorderThickness="0.2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,1,0" Click="Install_Click"/>
                 </Grid>
                 <Grid>
                     <Grid.Style>
@@ -267,7 +267,7 @@
                         </Style>
                     </Grid.Style>
                     <StackPanel Margin="0,5,0,0">
-                        <TextBlock Text="Unable to detect game type. You can try forcing an installation procedure by selecting it from the options below." FontSize="4" TextWrapping="Wrap" MaxWidth="126" Margin="0,0,0,3"/>
+                        <TextBlock Text="无法检测游戏类型。你可以尝试从下方选项中强制选择一种安装方式。" FontSize="4" TextWrapping="Wrap" MaxWidth="126" Margin="0,0,0,3"/>
                         <StackPanel Orientation="Horizontal">
                             <Grid Width="45" Height="10" Background="Transparent" HorizontalAlignment="Left">
                                 <ComboBox x:Name="uiCbOverwriteGameType" Margin="0,0.7,-155,-30" ItemsSource="{Binding GameTypes}" DisplayMemberPath="Value" SelectedValuePath="Key">
@@ -276,7 +276,7 @@
                                     </ComboBox.RenderTransform>
                                 </ComboBox>
                             </Grid>
-                            <local:IconButton Kind="Danger" Text="Force Install" FontSize="5" CornerRadius="2" Height="9" Width="30" Margin="3,0,0,0" Click="ContinueOverwriteGameType_Click">
+                            <local:IconButton Kind="Danger" Text="强制安装" FontSize="5" CornerRadius="2" Height="9" Width="30" Margin="3,0,0,0" Click="ContinueOverwriteGameType_Click">
                                 <local:IconButton.Style>
                                     <Style TargetType="local:IconButton" BasedOn="{StaticResource {x:Type local:IconButton}}">
                                         <Style.Triggers>
@@ -288,8 +288,8 @@
                                 </local:IconButton.Style>
                             </local:IconButton>
                         </StackPanel>
-                        <TextBlock Text="Or alternatively install the game manually to this folder:" FontSize="4" TextWrapping="Wrap" MaxWidth="126" Margin="0,5,0,0"/>
-                        <Border Background="Gainsboro" CornerRadius="2" Margin="0,3,0,0"  VerticalAlignment="Top" Padding="1" ToolTip="Copy to clipboard" MouseLeftButtonUp="CopyInstallPathToClipboard_Click">
+                        <TextBlock Text="或者手动安装游戏到此文件夹：" FontSize="4" TextWrapping="Wrap" MaxWidth="126" Margin="0,5,0,0"/>
+                        <Border Background="Gainsboro" CornerRadius="2" Margin="0,3,0,0"  VerticalAlignment="Top" Padding="1" ToolTip="复制到剪贴板" MouseLeftButtonUp="CopyInstallPathToClipboard_Click">
                             <TextBlock Text="{Binding InstallPath}" FontSize="3" Foreground="#FF424242" HorizontalAlignment="Left" Cursor="Hand"/>
                         </Border>
                     </StackPanel>
@@ -314,14 +314,14 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Style>
-                    <mah:ToggleSwitch Header="Create Shortcut" RenderTransformOrigin="0,0" Margin="1,0,-80,-40" IsOn="{Binding CreateShortcut,Mode=TwoWay}" >
+                    <mah:ToggleSwitch Header="创建快捷方式" RenderTransformOrigin="0,0" Margin="1,0,-80,-40" IsOn="{Binding CreateShortcut,Mode=TwoWay}" >
                         <mah:ToggleSwitch.RenderTransform>
                             <ScaleTransform ScaleX="0.2" ScaleY="0.2"/>
                         </mah:ToggleSwitch.RenderTransform>
                     </mah:ToggleSwitch>
                 </Grid>
                 <Button Style="{StaticResource ButtonWrapper}" HorizontalAlignment="Left" VerticalAlignment="Top"  Cursor="Hand" Width="8" Height="8" Margin="49,0,0,0" Click="InitOverwriteGameType_Click">
-                    <Grid  Background="Transparent" ToolTip="Overwrite game type">
+                    <Grid  Background="Transparent" ToolTip="覆盖游戏类型">
                         <Grid.Style>
                             <Style TargetType="Grid" BasedOn="{StaticResource HoverEffect}">
                                 <Style.Triggers>
@@ -344,7 +344,7 @@
                         </Grid.RenderTransform>
                     </Grid>
                 </Button>
-                <local:IconButton Kind="Skeleton" Text="Back" FontSize="5" CornerRadius="2" Height="9" Width="34" BorderThickness="0.2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,43,1,0" Click="InstallOptionCancel_Click"/>
+                <local:IconButton Kind="Skeleton" Text="返回" FontSize="5" CornerRadius="2" Height="9" Width="34" BorderThickness="0.2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,43,1,0" Click="InstallOptionCancel_Click"/>
             </Grid>
         </Grid>
     </Border>

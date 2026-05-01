@@ -146,11 +146,11 @@ namespace gamevault
             Stream iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/icon.ico")).Stream;
             m_Icon.Icon = new System.Drawing.Icon(iconStream);
             m_Icon.ContextMenuStrip = new ContextMenuStrip();
-            m_Icon.ContextMenuStrip.Items.Add("Library", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Library.png")).Stream), Navigate_Tab_Click);
-            m_Icon.ContextMenuStrip.Items.Add("Downloads", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Downloads.png")).Stream), Navigate_Tab_Click);
-            m_Icon.ContextMenuStrip.Items.Add("Community", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Community.png")).Stream), Navigate_Tab_Click);
-            m_Icon.ContextMenuStrip.Items.Add("Settings", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Settings.png")).Stream), Navigate_Tab_Click);
-            m_Icon.ContextMenuStrip.Items.Add("Exit", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Exit.png")).Stream), NotifyIcon_Exit_Click);
+            m_Icon.ContextMenuStrip.Items.Add("库", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Library.png")).Stream), Navigate_Tab_Click);
+            m_Icon.ContextMenuStrip.Items.Add("下载", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Downloads.png")).Stream), Navigate_Tab_Click);
+            m_Icon.ContextMenuStrip.Items.Add("社区", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Community.png")).Stream), Navigate_Tab_Click);
+            m_Icon.ContextMenuStrip.Items.Add("设置", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Settings.png")).Stream), Navigate_Tab_Click);
+            m_Icon.ContextMenuStrip.Items.Add("退出", new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/gamevault;component/Resources/Images/ContextMenuIcon_Exit.png")).Stream), NotifyIcon_Exit_Click);
             m_Icon.Visible = true;
         }
         private void InitJumpList()
@@ -162,11 +162,11 @@ namespace gamevault
                 JumpList.SetJumpList(Application.Current, jumpList);
             }
 
-            JumpTask LibraryTask = new JumpTask() { Title = "Library", Description = "Open Library", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=0" };
-            JumpTask DownloadsTask = new JumpTask() { Title = "Downloads", Description = "Open Downloads", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=1" };
-            JumpTask CommunityTask = new JumpTask() { Title = "Community", Description = "Open Community", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=2" };
-            JumpTask SettingsTask = new JumpTask() { Title = "Settings", Description = "Open Settings", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=3" };
-            JumpTask ExitTask = new JumpTask() { Title = "Exit", Description = "Exit GameVault", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=15" };
+            JumpTask LibraryTask = new JumpTask() { Title = "库", Description = "打开库", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=0" };
+            JumpTask DownloadsTask = new JumpTask() { Title = "下载", Description = "打开下载", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=1" };
+            JumpTask CommunityTask = new JumpTask() { Title = "社区", Description = "打开社区", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=2" };
+            JumpTask SettingsTask = new JumpTask() { Title = "设置", Description = "打开设置", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=3" };
+            JumpTask ExitTask = new JumpTask() { Title = "退出", Description = "退出 GameVault", CustomCategory = "Actions", ApplicationPath = Process.GetCurrentProcess().MainModule.FileName, Arguments = "show --jumplistcommand=15" };
             jumpList.JumpItems.Add(LibraryTask);
             jumpList.JumpItems.Add(DownloadsTask);
             jumpList.JumpItems.Add(CommunityTask);
@@ -187,7 +187,7 @@ namespace gamevault
                         JumpTask gameTask = new JumpTask()
                         {
                             Title = game.Key.Title,
-                            CustomCategory = "Last Played",
+                            CustomCategory = "最近游玩",
                             ApplicationPath = Process.GetCurrentProcess()?.MainModule?.FileName,
                             IconResourcePath = Preferences.Get(AppConfigKey.Executable, $"{game.Value}\\gamevault-exec"),
                             Arguments = $"start --gameid={game.Key.ID}"
@@ -247,7 +247,7 @@ namespace gamevault
                 {
                     MainWindow.Show();
                 }
-                MessageDialogResult result = await ((MetroWindow)MainWindow).ShowMessageAsync($"Downloads are still running in the background, are you sure you want to exit the app anyway?", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                MessageDialogResult result = await ((MetroWindow)MainWindow).ShowMessageAsync($"仍有下载在后台运行，确定要退出应用吗？", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                 if (result == MessageDialogResult.Affirmative)
                 {
                     MainWindowViewModel.Instance.Downloads.CancelAllDownloads();

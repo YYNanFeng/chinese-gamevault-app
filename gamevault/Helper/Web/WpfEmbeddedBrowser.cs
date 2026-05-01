@@ -23,7 +23,7 @@ namespace gamevault.Helper
             {
                 signinWindow = new Window()
                 {
-                    Title = "Phalcode Silent Sign-in"
+                    Title = "Phalcode 静默登录"
                 };
                 VisualHelper.HideWindow(signinWindow);
             }
@@ -120,7 +120,7 @@ namespace gamevault.Helper
             if (signinWindow.ShowInTaskbar == false)
             {
                 VisualHelper.RestoreHiddenWindow(signinWindow, 800, 600);
-                signinWindow.Title = "Phalcode Sign-in";
+                signinWindow.Title = "Phalcode 登录";
             }
         }
         public void ClearAllCookies()

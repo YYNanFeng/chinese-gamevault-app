@@ -318,7 +318,7 @@ namespace gamevault.UserControls
         {
             if (((KeyValuePair<Game, string>)((FrameworkElement)sender).DataContext).Key == null)
             {
-                MainWindowViewModel.Instance.AppBarText = "Cannot open game";
+                MainWindowViewModel.Instance.AppBarText = "无法打开游戏";
                 return;
             }
             MainWindowViewModel.Instance.SetActiveControl(new GameViewUserControl(((KeyValuePair<Game, string>)((FrameworkElement)sender).DataContext).Key, LoginManager.Instance.IsLoggedIn()));
@@ -354,7 +354,7 @@ namespace gamevault.UserControls
             KeyValuePair<Game, string> result = InstallViewModel.Instance.InstalledGames.Where(g => g.Key.ID == gameId).FirstOrDefault();
             if (SettingsViewModel.Instance.CloudSaves)
             {
-                MainWindowViewModel.Instance.AppBarText = $"Syncing cloud save...";
+                MainWindowViewModel.Instance.AppBarText = $"正在同步云存档...";
                 await SaveGameHelper.Instance.RestoreBackup(gameId, result.Value);
             }
 
@@ -364,7 +364,7 @@ namespace gamevault.UserControls
             }
             if (!Directory.Exists(path))
             {
-                MainWindowViewModel.Instance.AppBarText = $"Can not find part of '{path}'";
+                MainWindowViewModel.Instance.AppBarText = $"找不到路径 '{path}' 的一部分";
                 return;
             }
             string savedExecutable = Preferences.Get(AppConfigKey.Executable, $"{path}\\gamevault-exec");
@@ -377,7 +377,7 @@ namespace gamevault.UserControls
                 }
                 else
                 {
-                    MainWindowViewModel.Instance.AppBarText = $"No valid Executable found";
+                    MainWindowViewModel.Instance.AppBarText = $"未找到有效的可执行文件";
                     return;
                 }
             }
@@ -403,7 +403,7 @@ namespace gamevault.UserControls
             }
             else
             {
-                MainWindowViewModel.Instance.AppBarText = $"Could not find Executable '{savedExecutable}'";
+                MainWindowViewModel.Instance.AppBarText = $"找不到可执行文件 '{savedExecutable}'";
             }
         }
         private async void Settings_Click(object sender, RoutedEventArgs e)

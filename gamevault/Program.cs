@@ -97,7 +97,7 @@ namespace gamevault
                     // We can't return help on the command line, so show a message box instead
                     System.Windows.MessageBox.Show(
                         help.ToString(),
-                        "Help",
+                        "帮助",
                         System.Windows.MessageBoxButton.OK,
                         System.Windows.MessageBoxImage.Information);
 

@@ -60,10 +60,10 @@ namespace gamevault.UserControls
                 UpdateDataSizeUI();
                 if (File.Exists($"{m_DownloadPath}\\Extract\\gamevault-metadata") && Preferences.Get(AppConfigKey.ExtractionFinished, $"{m_DownloadPath}\\Extract\\gamevault-metadata") == "1")
                 {
-                    ViewModel.State = "Extracted";
+                    ViewModel.State = "已解压";
                     uiBtnExtract.IsEnabled = true;
                     uiBtnInstall.IsEnabled = true;
-                    uiBtnExtract.Text = "Re-Extract";
+                    uiBtnExtract.Text = "重新解压";
                     ViewModel.InstallationStepperProgress = 1;
                 }
                 else
@@ -72,7 +72,7 @@ namespace gamevault.UserControls
                     if (TryRecreatePausedUI())
                         return;
                     //If no valid pause data, its downloaded
-                    ViewModel.State = "Downloaded";
+                    ViewModel.State = "已下载";
                     uiBtnExtract.IsEnabled = true;
                     ViewModel.InstallationStepperProgress = 0;
                 }
@@ -114,7 +114,7 @@ namespace gamevault.UserControls
                     DownloadProgress(preResumeSize, 0, resumePos, progressPercentage, resumePos);
                     ViewModel.IsDownloadPaused = true;
                     ViewModel.DownloadUIVisibility = Visibility.Visible;
-                    ViewModel.State = "Download Paused";
+                    ViewModel.State = "下载已暂停";
                     return true;
                 }
             }
@@ -164,7 +164,7 @@ namespace gamevault.UserControls
             //client.Dispose();
             IsDownloadActive = false;
             ViewModel.IsDownloadPaused = false;
-            ViewModel.State = "Download Cancelled";
+            ViewModel.State = "下载已取消";
             ViewModel.DownloadUIVisibility = System.Windows.Visibility.Hidden;
             ViewModel.DownloadFailedVisibility = System.Windows.Visibility.Visible;
 
@@ -173,7 +173,7 @@ namespace gamevault.UserControls
         private async Task DownloadGame(bool tryResume = false)
         {
             IsDownloadActive = true;
-            ViewModel.State = "Downloading...";
+            ViewModel.State = "下载中...";
             ViewModel.DownloadUIVisibility = System.Windows.Visibility.Visible;
             ViewModel.DownloadFailedVisibility = System.Windows.Visibility.Hidden;
 
@@ -195,14 +195,14 @@ namespace gamevault.UserControls
             catch (Exception ex)
             {
                 IsDownloadActive = false;
-                ViewModel.State = $"Error: '{ex.Message}'";
+                ViewModel.State = $"错误: '{ex.Message}'";
                 ViewModel.DownloadUIVisibility = System.Windows.Visibility.Hidden;
                 ViewModel.DownloadFailedVisibility = System.Windows.Visibility.Visible;
 
                 if (downloadRetryTimer.Data != "error")
                 {
                     if (!App.Instance.IsWindowActiveAndControlInFocus(MainControl.Downloads))
-                        ToastMessageHelper.CreateToastMessage("Download Failed", ViewModel.Game.Title, $"{LoginManager.Instance.GetUserProfile().ImageCacheDir}/gbox/{ViewModel.Game.ID}.{ViewModel.Game.Metadata.Cover?.ID}");
+                        ToastMessageHelper.CreateToastMessage("下载失败", ViewModel.Game.Title, $"{LoginManager.Instance.GetUserProfile().ImageCacheDir}/gbox/{ViewModel.Game.ID}.{ViewModel.Game.Metadata.Cover?.ID}");
                 }
                 StartRetryTimer();
                 MainWindowViewModel.Instance.UpdateTaskbarProgress();
@@ -256,7 +256,7 @@ namespace gamevault.UserControls
                 ViewModel.IsDownloadPaused = true;
                 client.Pause();
                 IsDownloadActive = false;
-                ViewModel.State = "Download Paused";
+                ViewModel.State = "下载已暂停";
             }
         }
         public void PauseDownload()
@@ -267,7 +267,7 @@ namespace gamevault.UserControls
             ViewModel.IsDownloadPaused = true;
             client.Pause();
             IsDownloadActive = false;
-            ViewModel.State = "Download Paused";
+            ViewModel.State = "下载已暂停";
         }
         private void DownloadProgress(long totalFileSize, long currentBytesDownloaded, long totalBytesDownloaded, double? progressPercentage, long resumePosition)
         {
@@ -314,7 +314,7 @@ namespace gamevault.UserControls
             UpdateDataSizeUI();
             ViewModel.DownloadUIVisibility = System.Windows.Visibility.Hidden;
             IsDownloadActive = false;
-            ViewModel.State = "Downloaded";
+            ViewModel.State = "已下载";
             uiBtnExtract.IsEnabled = true;
             ViewModel.InstallationStepperProgress = 0;
             try
@@ -330,7 +330,7 @@ namespace gamevault.UserControls
             MainWindowViewModel.Instance.Library.GetGameInstalls().AddSystemFileWatcher(ViewModel.InstallPath);
 
             if (!App.Instance.IsWindowActiveAndControlInFocus(MainControl.Downloads))
-                ToastMessageHelper.CreateToastMessage("Download Complete", ViewModel.Game.Title, $"{LoginManager.Instance.GetUserProfile().ImageCacheDir}/gbox/{ViewModel.Game.ID}.{ViewModel.Game.Metadata?.Cover?.ID}");
+                ToastMessageHelper.CreateToastMessage("下载完成", ViewModel.Game.Title, $"{LoginManager.Instance.GetUserProfile().ImageCacheDir}/gbox/{ViewModel.Game.ID}.{ViewModel.Game.Metadata?.Cover?.ID}");
 
             if (SettingsViewModel.Instance.AutoExtract)
             {
@@ -386,7 +386,7 @@ namespace gamevault.UserControls
         {
             if (IsDownloadActive)
             {
-                MainWindowViewModel.Instance.AppBarText = "Can not delete during the download, extraction, installing process";
+                MainWindowViewModel.Instance.AppBarText = "下载、解压或安装过程中无法删除";
                 return;
             }
 
@@ -394,7 +394,7 @@ namespace gamevault.UserControls
 
             if (confirm)
             {
-                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to delete '{(ViewModel.Game == null ? "this Game" : ViewModel.Game.Title)}' ?", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要删除 '{(ViewModel.Game == null ? "此游戏" : ViewModel.Game.Title)}' 吗？", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
 
                 doDelete = result == MessageDialogResult.Affirmative;
             }
@@ -418,7 +418,7 @@ namespace gamevault.UserControls
                 }
                 catch
                 {
-                    MainWindowViewModel.Instance.AppBarText = "Can not delete during the download, extraction, installing process";
+                    MainWindowViewModel.Instance.AppBarText = "下载、解压或安装过程中无法删除";
                 }
             }
         }
@@ -477,15 +477,15 @@ namespace gamevault.UserControls
         {
             if (!Directory.Exists(m_DownloadPath))
             {
-                ViewModel.State = "Download path not found";
-                MainWindowViewModel.Instance.AppBarText = "Please report this issue on our Discord server or create a GitHub issue.";
+                ViewModel.State = "未找到下载路径";
+                MainWindowViewModel.Instance.AppBarText = "请在我们 Discord 服务器上报告此问题或创建 GitHub issue。";
                 return;
             }
             DirectoryInfo dirInf = new DirectoryInfo(m_DownloadPath);
             FileInfo[] files = dirInf.GetFiles().Where(f => ViewModel.SupportedArchives.Contains(f.Extension.ToLower())).ToArray();
             if (files.Length <= 0)
             {
-                ViewModel.State = "No archive found";
+                ViewModel.State = "未找到压缩包";
                 return;
             }
             uiBtnInstall.IsEnabled = false;
@@ -497,20 +497,20 @@ namespace gamevault.UserControls
                 mountedDrive = await MountISO(Path.Combine(m_DownloadPath, files[0].Name));
                 if (Directory.Exists(mountedDrive))
                 {
-                    ViewModel.State = $"ISO mounted at {mountedDrive}";
+                    ViewModel.State = $"ISO 已挂载到 {mountedDrive}";
                     ViewModel.InstallationStepperProgress = 1;
                     uiBtnExtract.IsEnabled = true;
                     uiBtnInstall.IsEnabled = true;
                     return;
                 }
-                ViewModel.State = "Failed to Mount ISO";
+                ViewModel.State = "ISO 挂载失败";
                 uiBtnExtract.IsEnabled = true;
                 return;
             }
             //
 
             ViewModel.ExtractionUIVisibility = System.Windows.Visibility.Hidden;
-            ViewModel.State = "Extracting...";
+            ViewModel.State = "解压中...";
             ViewModel.ExtractionUIVisibility = System.Windows.Visibility.Visible;
             downloadSpeedCalc = new DownloadSpeedCalculator();//Reuse download speed calculator as extraction speed calculator and set new instance to reset it
             sevenZipHelper.Process += ExtractionProgress;
@@ -546,14 +546,14 @@ namespace gamevault.UserControls
                     File.Create($"{m_DownloadPath}\\Extract\\gamevault-metadata").Close();
                 }
                 Preferences.Set(AppConfigKey.ExtractionFinished, "1", $"{m_DownloadPath}\\Extract\\gamevault-metadata");
-                ViewModel.State = "Extracted";
-                uiBtnExtract.Text = "Re-Extract";
+                ViewModel.State = "已解压";
+                uiBtnExtract.Text = "重新解压";
 
                 ViewModel.InstallationStepperProgress = 1;
                 ViewModel.ExtractionUIVisibility = System.Windows.Visibility.Hidden;
 
                 if (!App.Instance.IsWindowActiveAndControlInFocus(MainControl.Downloads))
-                    ToastMessageHelper.CreateToastMessage("Extraction Complete", ViewModel.Game.Title, $"{LoginManager.Instance.GetUserProfile().ImageCacheDir}/gbox/{ViewModel.Game?.ID}.{ViewModel.Game?.Metadata?.Cover?.ID}");
+                    ToastMessageHelper.CreateToastMessage("解压完成", ViewModel.Game.Title, $"{LoginManager.Instance.GetUserProfile().ImageCacheDir}/gbox/{ViewModel.Game?.ID}.{ViewModel.Game?.Metadata?.Cover?.ID}");
 
                 if (SettingsViewModel.Instance.AutoInstallPortable && (ViewModel.Game?.Type == GameType.WINDOWS_PORTABLE || ViewModel.Game?.Type == GameType.LINUX_PORTABLE))
                 {
@@ -580,17 +580,17 @@ namespace gamevault.UserControls
                 if (extractionCancelled)
                 {
                     extractionCancelled = false;
-                    ViewModel.State = "Extraction cancelled";
+                    ViewModel.State = "解压已取消";
                 }
                 else if (result == 69)
                 {
-                    ViewModel.State = "Error: Wrong password";
+                    ViewModel.State = "错误：密码错误";
                 }
                 else
                 {
-                    ViewModel.State = "Something went wrong during extraction";
+                    ViewModel.State = "解压过程中出现错误";
                     if (!App.Instance.IsWindowActiveAndControlInFocus(MainControl.Downloads))
-                        ToastMessageHelper.CreateToastMessage("Extraction Failed", ViewModel.Game.Title, $"{LoginManager.Instance.GetUserProfile().ImageCacheDir}/gbox/{ViewModel.Game?.ID}.{ViewModel.Game?.Metadata?.Cover?.ID}");
+                        ToastMessageHelper.CreateToastMessage("解压失败", ViewModel.Game.Title, $"{LoginManager.Instance.GetUserProfile().ImageCacheDir}/gbox/{ViewModel.Game?.ID}.{ViewModel.Game?.Metadata?.Cover?.ID}");
                 }
                 ViewModel.ExtractionUIVisibility = System.Windows.Visibility.Hidden;
             }
@@ -650,9 +650,9 @@ namespace gamevault.UserControls
         {
             if (InstallViewModel.Instance.InstalledGames.Any(game => game.Key.ID == ViewModel.Game.ID))
             {
-                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"The Game {ViewModel.Game.Title} is already installed at \n'{InstallViewModel.Instance.InstalledGames.First(game => game.Key.ID == ViewModel.Game.ID).Value}'" +
-                       $"\nWarning: Overwriting an existing installation with a new one may cause data corruption.", "",
-                       MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Continue", NegativeButtonText = "Cancel", AnimateHide = false });
+                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"游戏 {ViewModel.Game.Title} 已安装在 \n'{InstallViewModel.Instance.InstalledGames.First(game => game.Key.ID == ViewModel.Game.ID).Value}'" +
+                       $"\n警告：用新安装覆盖现有安装可能导致数据损坏。", "",
+                       MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "继续", NegativeButtonText = "取消", AnimateHide = false });
 
                 if (result == MessageDialogResult.Negative)
                     return;
@@ -704,17 +704,17 @@ namespace gamevault.UserControls
                 uiBtnInstallPortable.IsEnabled = true;
                 uiBtnInstallSetup.IsEnabled = true;
 
-                ViewModel.State = "Downloaded";
-                uiBtnExtract.Text = "Extract";
+                ViewModel.State = "已下载";
+                uiBtnExtract.Text = "解压";
                 if (error)
                 {
-                    MainWindowViewModel.Instance.AppBarText = "Something wen't wrong during installation";
+                    MainWindowViewModel.Instance.AppBarText = "安装过程中出现错误";
                 }
                 else
                 {
-                    MainWindowViewModel.Instance.AppBarText = $"Successfully installed '{ViewModel.Game.Title}'";
+                    MainWindowViewModel.Instance.AppBarText = $"已成功安装 '{ViewModel.Game.Title}'";
                     ViewModel.InstallationStepperProgress = 2;
-                    ViewModel.State = "Installed";
+                    ViewModel.State = "已安装";
 
                     //Auto delete files of portable games after successful installation
                     if (SettingsViewModel.Instance.AutoDeletePortableGameFiles)
@@ -745,7 +745,7 @@ namespace gamevault.UserControls
                         }
                         catch
                         {
-                            MainWindowViewModel.Instance.AppBarText = $"Can not execute '{setupEexecutable}'";
+                            MainWindowViewModel.Instance.AppBarText = $"无法执行 '{setupEexecutable}'";
                         }
                     }
                     if (setupProcess != null)
@@ -755,7 +755,7 @@ namespace gamevault.UserControls
                         if (InstallViewModel.Instance.InstalledGames.Any(g => g.Key.ID == ViewModel.Game.ID))
                         {
                             ViewModel.InstallationStepperProgress = 2;
-                            ViewModel.State = "Installed";
+                            ViewModel.State = "已安装";
                         }
                     }
                 }
@@ -819,7 +819,7 @@ namespace gamevault.UserControls
                 {
                     if (!GameSettingsUserControl.TryPrepareLaunchExecutable(game.Value))
                     {
-                        MainWindowViewModel.Instance.AppBarText = $"Can not create shortcut. No valid Executable found";
+                        MainWindowViewModel.Instance.AppBarText = $"无法创建快捷方式。未找到有效的可执行文件";
                         return;
                     }
                 }
@@ -855,7 +855,7 @@ namespace gamevault.UserControls
             try
             {
                 Clipboard.SetText(ViewModel.InstallPath);
-                MainWindowViewModel.Instance.AppBarText = "Copied Installation Directory to Clipboard";
+                MainWindowViewModel.Instance.AppBarText = "安装目录已复制到剪贴板";
             }
             catch { }
         }
@@ -872,7 +872,7 @@ namespace gamevault.UserControls
             }
             else
             {
-                MainWindowViewModel.Instance.AppBarText = "No gametype selected for overwriting";
+                MainWindowViewModel.Instance.AppBarText = "未选择要覆盖的游戏类型";
             }
         }
 

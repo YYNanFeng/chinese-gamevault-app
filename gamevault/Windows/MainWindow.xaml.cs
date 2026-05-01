@@ -97,7 +97,7 @@ namespace gamevault.Windows
             }
             else if (LoginState.Unauthorized == state || LoginState.Forbidden == state)
             {
-                MainWindowViewModel.Instance.AppBarText = "You are not logged in";
+                MainWindowViewModel.Instance.AppBarText = "你尚未登录";
             }
             else if (LoginState.Error == state)
             {
@@ -122,7 +122,7 @@ namespace gamevault.Windows
                 if (Preferences.Get(AppConfigKey.RunningInTrayMessage, LoginManager.Instance.GetUserProfile().UserConfigFile) != "1")
                 {
                     Preferences.Set(AppConfigKey.RunningInTrayMessage, "1", LoginManager.Instance.GetUserProfile().UserConfigFile);
-                    ToastMessageHelper.CreateToastMessage("Information", "GameVault is still running in the background");
+                    ToastMessageHelper.CreateToastMessage("提示", "GameVault 仍在后台运行");
                 }
             }
         }

@@ -75,17 +75,17 @@ namespace gamevault.UserControls.SettingsComponents
                     uiBackupDirectory.Text, $"DB_Backup_{DateTime.Now.ToString()}.db", additionalRequestHeaders);
 
                 await httpClientDownloadWithProgress.StartDownload();
-                MainWindowViewModel.Instance.AppBarText = "Successfully performed database backup.";
+                MainWindowViewModel.Instance.AppBarText = "数据库备份成功。";
             }
             catch (HttpRequestException httpEx)
             {
                 if (httpEx.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    MainWindowViewModel.Instance.AppBarText = "Unauthorized. Either the database password is wrong or you are not logged in.";
+                    MainWindowViewModel.Instance.AppBarText = "未授权。数据库密码错误或你未登录。";
                 }
                 else
                 {
-                    MainWindowViewModel.Instance.AppBarText = $"Http Error: {httpEx.Message}";
+                    MainWindowViewModel.Instance.AppBarText = $"HTTP 错误: {httpEx.Message}";
                 }
             }
             catch (Exception ex)
@@ -100,7 +100,7 @@ namespace gamevault.UserControls.SettingsComponents
         {
             using (var dialog = new System.Windows.Forms.OpenFileDialog())
             {
-                dialog.Filter = "Database File|*.db";
+                dialog.Filter = "数据库文件|*.db";
                 System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                 if (result == System.Windows.Forms.DialogResult.OK && File.Exists(dialog.FileName))
                 {
@@ -130,22 +130,22 @@ namespace gamevault.UserControls.SettingsComponents
             try
             {
                 await WebHelper.UploadFileAsync(@$"{SettingsViewModel.Instance.ServerUrl}/api/admin/database/restore", File.OpenRead(uiRestoreFile.Tag.ToString()), uiRestoreFile.Text, new List<RequestHeader> { new RequestHeader() { Name = "X-Database-Password", Value = uiRestoreDatabasePassword.Password } });
-                MainWindowViewModel.Instance.AppBarText = "Successfully uploaded database file";
+                MainWindowViewModel.Instance.AppBarText = "数据库文件上传成功";
             }
             catch (HttpRequestException httpEx)
             {
                 if (httpEx.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    MainWindowViewModel.Instance.AppBarText = "Unauthorized. Either the database password is wrong or you are not logged in.";
+                    MainWindowViewModel.Instance.AppBarText = "未授权。数据库密码错误或你未登录。";
                 }
                 else
                 {
-                    MainWindowViewModel.Instance.AppBarText = $"Http Error: {httpEx.Message}";
+                    MainWindowViewModel.Instance.AppBarText = $"HTTP 错误: {httpEx.Message}";
                 }
             }
             catch (Exception ex)
             {
-                MainWindowViewModel.Instance.AppBarText = $"Error: {ex.Message}";
+                MainWindowViewModel.Instance.AppBarText = $"错误: {ex.Message}";
             }
             uiBtnStartRestore.IsEnabled = true;
             this.IsEnabled = true;

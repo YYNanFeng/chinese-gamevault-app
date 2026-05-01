@@ -97,7 +97,7 @@ namespace gamevault
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show(ex.Message, "An error while startin the internal pipe server", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                System.Windows.MessageBox.Show(ex.Message, "启动内部管道服务器时出错", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
             }
         }
 
@@ -592,7 +592,7 @@ namespace gamevault
 
                 if (game == null)
                 {
-                    MessageBox.Show($"Game with ID {id} not found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"未找到 ID 为 {id} 的游戏", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -628,7 +628,7 @@ namespace gamevault
             }
             else
             {
-                MessageBox.Show($"Game with ID {id} not found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"未找到 ID 为 {id} 的游戏", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private async Task ExecuteJumpListCommand(int id)

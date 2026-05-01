@@ -22,7 +22,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground2}" Grid.Row="0">
-            <TextBlock Text="Library" FontSize="35" Margin="20,0,0,0" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+            <TextBlock Text="库" FontSize="35" Margin="20,0,0,0" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
         </Border>
         <ScrollViewer x:Name="uiMainScrollBar" Grid.Row="1" VerticalScrollBarVisibility="Auto"  RequestBringIntoView="uiMainScrollBar_RequestBringIntoView" ScrollChanged="uiMainScrollBar_ScrollChanged">
             <StackPanel>
@@ -33,7 +33,7 @@
                     <Expander x:Name="uiExpanderGameCards" Width="2000" Margin="10,0,10,10" mah:ExpanderHelper.HeaderDownStyle="{StaticResource CustomExpanderToggleButton}" BorderBrush="{x:Null}">
                         <Expander.Header>
                             <Grid Height="35">
-                                <TextBlock Text="Server Games" Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" FontWeight="Bold" HorizontalAlignment="Left" FontSize="20" VerticalAlignment="Center"/>
+                                <TextBlock Text="服务器游戏" Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" FontWeight="Bold" HorizontalAlignment="Left" FontSize="20" VerticalAlignment="Center"/>
                                 <TextBlock FontWeight="Bold" Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" HorizontalAlignment="Left" FontSize="20" VerticalAlignment="Center" Margin="135,0,0,0">
                                     <TextBlock.Style>
                                         <Style TargetType="TextBlock">
@@ -56,7 +56,7 @@
                                     </TextBlock.Text>
                                 </TextBlock>
                                 <TextBox HorizontalAlignment="Center" Width="378" Margin="0,4,45,4" Style="{DynamicResource SearchTextBox}" TextChanged="Search_TextChanged"/>
-                                <Button Style="{StaticResource ButtonWrapper}" x:Name="uiBtnReloadLibrary" Height="25" Width="25" Margin="394,0,0,0" Cursor="Hand" ToolTip="Reload Library (F5)" Click="ReloadLibrary_Click">
+                                <Button Style="{StaticResource ButtonWrapper}" x:Name="uiBtnReloadLibrary" Height="25" Width="25" Margin="394,0,0,0" Cursor="Hand" ToolTip="重新加载库 (F5)" Click="ReloadLibrary_Click">
                                     <Grid  Style="{DynamicResource HoverEffect}" Background="Transparent">
                                         <Path Data="{StaticResource IconReload}" Fill="{DynamicResource MahApps.Brushes.IdealForeground}" Margin="0,0.6,0,0" RenderTransformOrigin="0.5,0.5">
                                             <Path.RenderTransform>
@@ -68,7 +68,7 @@
                                         </Grid.RenderTransform>
                                     </Grid>
                                 </Button>
-                                <Button Style="{StaticResource ButtonWrapper}" Height="30" Width="33" Margin="480,0,0,0" Cursor="Hand" ToolTip="I'm Feeling Lucky" Click="RandomGame_Click">
+                                <Button Style="{StaticResource ButtonWrapper}" Height="30" Width="33" Margin="480,0,0,0" Cursor="Hand" ToolTip="手气不错" Click="RandomGame_Click">
                                     <Grid Style="{DynamicResource HoverEffect}" Background="Transparent">
                                         <Path Data="{StaticResource IconLibraryDices}" Fill="{DynamicResource MahApps.Brushes.IdealForeground}" Margin="-229,-229,-227,-227" RenderTransformOrigin="0.5,0.5">
                                             <Path.RenderTransform>
@@ -80,7 +80,7 @@
                                         </Grid.RenderTransform>
                                     </Grid>
                                 </Button>
-                                <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="30" Margin="0,0,40,0" Cursor="Hand" ToolTip="Clear all Filters" Background="Transparent" MouseLeftButtonDown="ClearAllFilters_Click">
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="30" Margin="0,0,40,0" Cursor="Hand" ToolTip="清除所有筛选" Background="Transparent" MouseLeftButtonDown="ClearAllFilters_Click">
                                     <Path Data="m11.25 4.75l-6.5 6.5m0-6.5l6.5 6.5" Stroke="IndianRed" StrokeThickness="2" RenderTransformOrigin="0.04,0.02">
                                         <Path.RenderTransform>
                                             <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -100,7 +100,7 @@
                                     </Grid.Style>
                                 </Grid>
                                 <mah:Badged Badge="{Binding FilterCounter}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,22,6,0" BadgeBackground="IndianRed"/>
-                                <Grid Style="{DynamicResource HoverEffect}" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="30" Margin="0,0,7,0" Cursor="Hand" ToolTip="Toggle Filters &amp; Sorting" Background="Transparent" MouseLeftButtonDown="Filter_Click">
+                                <Grid Style="{DynamicResource HoverEffect}" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="30" Margin="0,0,7,0" Cursor="Hand" ToolTip="切换筛选与排序" Background="Transparent" MouseLeftButtonDown="Filter_Click">
                                     <Path Data="{StaticResource IconOpenFilter}" Fill="{DynamicResource MahApps.Brushes.IdealForeground}" RenderTransformOrigin="0.2,0.2">
                                         <Path.RenderTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
@@ -122,11 +122,11 @@
                                     <local:PillSelector x:Name="uiFilterPublisherSelector" SelectionType="Publishers" Margin="0,0,24,0" Width="175" EntriesUpdated="FilterUpdated"/>
                                     <local:PillSelector x:Name="uiFilterGameStateSelector" SelectionType="GameState" IsMultiSelection="False" Margin="0,0,23,0" Width="175" EntriesUpdated="FilterUpdated"/>
                                     <StackPanel Margin="0,0,97,0">
-                                        <TextBlock Text="Release Year" FontSize="15"/>
+                                        <TextBlock Text="发行年份" FontSize="15"/>
                                         <local:DateRangeSelector x:Name="uiFilterReleaseDateRangeSelector" EntriesUpdated="FilterUpdated"/>
                                     </StackPanel>
                                     <StackPanel Margin="0,0,119,0">
-                                        <TextBlock Text="Early Access" FontSize="15"/>
+                                        <TextBlock Text="抢先体验" FontSize="15"/>
                                         <ToggleButton x:Name="uiFilterEarlyAccess" Cursor="Hand" Margin="3,3,0,0" HorizontalAlignment="Left" Click="FilterUpdated">
                                             <ToggleButton.Style>
                                                 <Style TargetType="ToggleButton">
@@ -160,7 +160,7 @@
                                         </ToggleButton>
                                     </StackPanel>
                                     <StackPanel>
-                                        <TextBlock Text="Bookmarks" FontSize="15"/>
+                                        <TextBlock Text="收藏" FontSize="15"/>
                                         <ToggleButton x:Name="uiFilterBookmarks"  Cursor="Hand" Margin="0,3,0,0" HorizontalAlignment="Left" Click="FilterUpdated">
                                             <ToggleButton.Style>
                                                 <Style TargetType="ToggleButton">
@@ -250,11 +250,11 @@
                                             </Style>
                                         </StackPanel.Style>
                                         <Image Source="pack://application:,,,/gamevault;component/Resources/Images/library_NoGameFound.png" RenderOptions.EdgeMode="Aliased" Height="190"/>
-                                        <TextBlock Text="No Games found" FontSize="20" HorizontalAlignment="Center" Margin="0,-10,0,0"/>
+                                        <TextBlock Text="未找到游戏" FontSize="20" HorizontalAlignment="Center" Margin="0,-10,0,0"/>
                                         <TextBlock HorizontalAlignment="Center" FontSize="10" Margin="0,5,0,10" Opacity="0.8">
                     <Hyperlink TextDecorations="Baseline" NavigateUri="https://gamevau.lt/docs/troubleshooting/#games-not-appearing-in-the-installations--servers-list" RequestNavigate="Hyperlink_RequestNavigate" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}">
                     <Hyperlink.Inlines>
-                        <Run Text="Troubleshooting"/>
+                        <Run Text="故障排除"/>
                     </Hyperlink.Inlines>
                 </Hyperlink>
                                         </TextBlock>
@@ -273,11 +273,11 @@
                                             </Style>
                                         </StackPanel.Style>
                                         <Image Source="pack://application:,,,/gamevault;component/Resources/Images/install_NoGameFound.png" RenderOptions.EdgeMode="Aliased" Height="190"/>
-                                        <TextBlock Text="Failed to load Library" FontSize="20" HorizontalAlignment="Center" Margin="0,-10,0,0"/>
+                                        <TextBlock Text="加载库失败" FontSize="20" HorizontalAlignment="Center" Margin="0,-10,0,0"/>
                                         <TextBlock HorizontalAlignment="Center" FontSize="10" Margin="0,5,0,10" Opacity="0.8">
     <Hyperlink TextDecorations="Baseline" NavigateUri="https://gamevau.lt/docs/troubleshooting/#unable-to-connect-to-server--500-internal-server-error" RequestNavigate="Hyperlink_RequestNavigate" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}">
     <Hyperlink.Inlines>
-        <Run Text="Troubleshooting"/>
+        <Run Text="故障排除"/>
     </Hyperlink.Inlines>
 </Hyperlink>
                                         </TextBlock>
@@ -416,7 +416,7 @@
                                                                                                     <Button Style="{StaticResource DownloadKey}">
                                                                                                         <Grid Style="{StaticResource HoverEffect}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" Background="Transparent" Height="61" Width="65">
                                                                                                             <Grid.ToolTip>
-                                                                                                                <TextBlock Text="{Binding Path=DownloadCount,StringFormat='{}Downloaded {0} times'}"/>
+                                                                                                                <TextBlock Text="{Binding Path=DownloadCount,StringFormat='{}已下载 {0} 次'}"/>
                                                                                                             </Grid.ToolTip>
                                                                                                             <Path Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.03,0.08">
                                                                                                                 <Path.RenderTransform>

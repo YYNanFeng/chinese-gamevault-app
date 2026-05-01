@@ -23,34 +23,34 @@
             <TabControl Width="500" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" Height="235">
                 <TabItem Header="Backup">
                     <StackPanel>
-                        <TextBlock Text="Create and download a Database Backup. This process will generate an unencrypted file containing all the data currently stored in the database, which can be restored at a later time." FontSize="15" TextWrapping="Wrap"/>
-                        <TextBlock Text="Select a directory in which the backup file should be saved." FontSize="15" TextWrapping="Wrap"/>
+                        <TextBlock Text="创建并下载数据库备份。此过程将生成一个包含数据库中当前所有数据的未加密文件，可在以后恢复。" FontSize="15" TextWrapping="Wrap"/>
+                        <TextBlock Text="选择备份文件的保存目录。" FontSize="15" TextWrapping="Wrap"/>
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                            <controls:IconButton Text="Select Directory" Width="120" FontSize="15" Click="ChooseBackupDirectory_Click"/>
+                            <controls:IconButton Text="选择目录" Width="120" FontSize="15" Click="ChooseBackupDirectory_Click"/>
                             <ScrollViewer x:Name="uiBackupDirectoryScrollViewer" Margin="10,3,0,0" Height="20" Width="380" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
                                 <TextBlock x:Name="uiBackupDirectory" FontSize="12"  FontWeight="Bold"/>
                             </ScrollViewer>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                            <PasswordBox x:Name="uiBackupDatabasePassword" mah:ControlsHelper.CornerRadius="2" mah:PasswordBoxHelper.CapsLockWarningToolTip="CAPSLOCK" Width="347" PasswordChanged="Backup_PasswordChanged"/>
-                            <TextBlock Text="Database Password" FontSize="15" Margin="10,1,0,0" FontWeight="Bold"/>
+                            <PasswordBox x:Name="uiBackupDatabasePassword" mah:ControlsHelper.CornerRadius="2" mah:PasswordBoxHelper.CapsLockWarningToolTip="大写锁定已开启" Width="347" PasswordChanged="Backup_PasswordChanged"/>
+                            <TextBlock Text="数据库密码" FontSize="15" Margin="10,1,0,0" FontWeight="Bold"/>
                         </StackPanel>
-                        <controls:IconButton x:Name="uiBtnStartBackup" Text="Start Backup" IsEnabled="False" FontSize="15" Height="30" Margin="0,10,0,0" Click="StartBackup_Click"/>
+                        <controls:IconButton x:Name="uiBtnStartBackup" Text="开始备份" IsEnabled="False" FontSize="15" Height="30" Margin="0,10,0,0" Click="StartBackup_Click"/>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Restore">
+                <TabItem Header="恢复">
                     <StackPanel>
-                        <TextBlock Text="Restoring your database from a file will completely replace your existing database. It is strongly discouraged to restore a database from another version and it is not possible to restore a database from another DBMS (SQLITE x POSTGRESQL)" FontSize="13" TextWrapping="Wrap"/>
-                        <TextBlock Text="Select the Database File to upload." FontSize="13" TextWrapping="Wrap" Margin="0,0,0,20"/>
+                        <TextBlock Text="从文件恢复数据库将完全替换现有数据库。强烈建议不要恢复其他版本的数据库，且无法从其他 DBMS 恢复（SQLITE x POSTGRESQL）" FontSize="13" TextWrapping="Wrap"/>
+                        <TextBlock Text="选择要上传的数据库文件。" FontSize="13" TextWrapping="Wrap" Margin="0,0,0,20"/>
                         <StackPanel Orientation="Horizontal" Margin="0,0.7,0,0">
-                            <controls:IconButton Text="Select Database File" Width="140" Height="23" FontSize="15" Click="ChooseRestoreFile_Click" />
+                            <controls:IconButton Text="选择数据库文件" Width="140" Height="23" FontSize="15" Click="ChooseRestoreFile_Click" />
                             <TextBlock x:Name="uiRestoreFile" FontSize="12" Margin="10,3,0,0" FontWeight="Bold"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                            <PasswordBox x:Name="uiRestoreDatabasePassword" mah:ControlsHelper.CornerRadius="2" mah:PasswordBoxHelper.CapsLockWarningToolTip="CAPSLOCK" Width="347" PasswordChanged="Restore_PasswordChanged"/>
-                            <TextBlock Text="Database Password" FontSize="15" Margin="10,1,0,0" FontWeight="Bold"/>
+                            <PasswordBox x:Name="uiRestoreDatabasePassword" mah:ControlsHelper.CornerRadius="2" mah:PasswordBoxHelper.CapsLockWarningToolTip="大写锁定已开启" Width="347" PasswordChanged="Restore_PasswordChanged"/>
+                            <TextBlock Text="数据库密码" FontSize="15" Margin="10,1,0,0" FontWeight="Bold"/>
                         </StackPanel>
-                        <controls:IconButton x:Name="uiBtnStartRestore" Text="Start Restore" IsEnabled="False" Height="30" FontSize="15" Margin="0,10,0,0" Click="StartRestore_Click"/>
+                        <controls:IconButton x:Name="uiBtnStartRestore" Text="开始恢复" IsEnabled="False" Height="30" FontSize="15" Margin="0,10,0,0" Click="StartRestore_Click"/>
                     </StackPanel>
                 </TabItem>
             </TabControl>

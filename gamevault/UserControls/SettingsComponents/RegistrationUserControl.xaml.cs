@@ -86,7 +86,7 @@ namespace gamevault.UserControls.SettingsComponents
             catch (Exception ex)
             {
                 string message = WebExceptionHelper.TryGetServerMessage(ex);
-                ViewModel.SignUpServerInfo = new BindableServerInfo(message == "" ? "Could not connect to server" : message);
+                ViewModel.SignUpServerInfo = new BindableServerInfo(message == "" ? "无法连接到服务器" : message);
             }
         }
         private string ValidateUriScheme(string uri)
@@ -115,7 +115,7 @@ namespace gamevault.UserControls.SettingsComponents
                     {
                         await MainWindowViewModel.Instance.AdminConsole.InitUserList();
                     }
-                    MainWindowViewModel.Instance.AppBarText = "Successfully registrated User";
+                    MainWindowViewModel.Instance.AppBarText = "用户注册成功";
                     return;
                 }
                 MainWindowViewModel.Instance.AppBarText = LoginManager.Instance.GetServerLoginResponseMessage();
@@ -129,16 +129,16 @@ namespace gamevault.UserControls.SettingsComponents
         {
             if (string.IsNullOrWhiteSpace(ViewModel.SignupUser.ServerUrl))
             {
-                throw new Exception("Server URL is not set");
+                throw new Exception("服务器地址未设置");
             }
             ViewModel.SignupUser.ServerUrl = ValidateUriScheme(ViewModel.SignupUser.ServerUrl);
             if (string.IsNullOrWhiteSpace(ViewModel.SignupUser.Password) || string.IsNullOrWhiteSpace(ViewModel.SignupUser.RepeatPassword))
             {
-                throw new Exception("Password is not set");
+                throw new Exception("密码未填写");
             }
             if (ViewModel.SignupUser.Password != ViewModel.SignupUser.RepeatPassword)
             {
-                throw new Exception("Password must be equal");
+                throw new Exception("两次输入的密码不一致");
             }
             if (string.IsNullOrWhiteSpace(ViewModel.SignupUser.Username))
             {

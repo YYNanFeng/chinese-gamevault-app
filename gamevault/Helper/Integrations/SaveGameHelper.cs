@@ -156,7 +156,7 @@ namespace gamevault.Helper.Integrations
                 }
                 try
                 {
-                    MainWindowViewModel.Instance.AppBarText = "Uploading Savegame to the Server...";
+                    MainWindowViewModel.Instance.AppBarText = "正在上传存档到服务器...";
                     string status = await BackupSaveGame(removedId);
                     MainWindowViewModel.Instance.AppBarText = status;
                 }
@@ -391,18 +391,18 @@ namespace gamevault.Helper.Integrations
     }
     public struct CloudSaveStatus
     {
-        public static string BackupSuccess = "Successfully synchronized the cloud saves";
-        public static string BackupFailed = "Something went wrong during the Backup";
-        public static string BackupCreationFailed = "Failed to create a copy of your Savegame";
-        public static string BackupUploadFailed = "Failed to upload your Savegame to the Server";
+        public static string BackupSuccess = "云存档同步成功";
+        public static string BackupFailed = "备份过程中出现问题";
+        public static string BackupCreationFailed = "创建存档副本失败";
+        public static string BackupUploadFailed = "上传存档到服务器失败";
 
-        public static string RestoreSuccess = "Successfully synchronized the cloud save";
-        public static string RestoreFailed = "Failed to restore the Savegame";
-        public static string UpToDate = "Your Savegame is up to date";
+        public static string RestoreSuccess = "云存档同步成功";
+        public static string RestoreFailed = "恢复存档失败";
+        public static string UpToDate = "存档已是最新";
 
-        public static string SettingDisabled = "Activate Cloud Saves under Settings -> GameVault+ -> Cloud Saves";
-        public static string ServerSettingDisabled = "Cloud Saves are not enabled on this Server";
-        public static string Offline = "Can not synchronize the cloud saves, because you are offline";
+        public static string SettingDisabled = "在 设置 -> GameVault+ -> 云存档 中启用云存档";
+        public static string ServerSettingDisabled = "此服务器未启用云存档功能";
+        public static string Offline = "无法同步云存档，因为你处于离线状态";
     }
     public class DirectoryEntry
     {

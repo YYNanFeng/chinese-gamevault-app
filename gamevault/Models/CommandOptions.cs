@@ -214,7 +214,7 @@ $",
             }
             else
             {
-                System.Windows.MessageBox.Show($"Invalid action: {action}", "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                System.Windows.MessageBox.Show($"无效的操作: {action}", "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
             }
 
             if (!string.IsNullOrEmpty(parameters))
@@ -257,12 +257,12 @@ $",
 
     #region Verb instances of CommandOptions
 
-    [Verb("show", HelpText = "Show GameVault, or optionally a specific game.")]
+    [Verb("show", HelpText = "显示 GameVault，或显示指定的游戏。")]
     public class CommandOptions_Show : CommandOptions
     {
         public override ActionEnum Action { get => ActionEnum.Show; set => base.Action = ActionEnum.Show; }
 
-        [Option("minimized", Required = false, HelpText = "Start minimized.")]
+        [Option("minimized", Required = false, HelpText = "最小化启动。")]
         public new bool Minimized { get => base.Minimized.GetValueOrDefault(); set => base.Minimized = value; }
 
         [Option("gameid", Required = false, HelpText = $"The {nameof(Game.ID)} of the game to show, or null to simply open GameVault.", Default = null)]
@@ -272,7 +272,7 @@ $",
         public override int? JumpListCommand { get => base.JumpListCommand.GetValueOrDefault(); set => base.JumpListCommand = value; }
     }
 
-    [Verb("install", HelpText = "Install a game from GameVault.")]
+    [Verb("install", HelpText = "从 GameVault 安装游戏。")]
     public class CommandOptions_Install : CommandOptions
     {
         public override ActionEnum Action { get => ActionEnum.Install; set => base.Action = ActionEnum.Install; }
@@ -281,7 +281,7 @@ $",
         public new int GameId { get => base.GameId.GetValueOrDefault(); set => base.GameId = value; }
     }
 
-    [Verb("uninstall", HelpText = "Uninstall a game from GameVault.")]
+    [Verb("uninstall", HelpText = "从 GameVault 卸载游戏。")]
     public class CommandOptions_Uninstall : CommandOptions
     {
         public override ActionEnum Action { get => ActionEnum.Uninstall; set => base.Action = ActionEnum.Uninstall; }
@@ -290,7 +290,7 @@ $",
         public new int GameId { get => base.GameId.GetValueOrDefault(); set => base.GameId = value; }
     }
 
-    [Verb("start", HelpText = "Start a game, or install it if necessary.")]
+    [Verb("start", HelpText = "启动游戏，如需要则先安装。")]
     public class CommandOptions_Start : CommandOptions
     {
         public override ActionEnum Action { get => ActionEnum.Start; set => base.Action = ActionEnum.Start; }
@@ -298,7 +298,7 @@ $",
         [Option("gameid", Required = true, HelpText = $"The {nameof(Game.ID)} of the game to start.")]
         public new int GameId { get => base.GameId.GetValueOrDefault(); set => base.GameId = value; }
 
-        [Option("autoinstall", Required = false, HelpText = "Install the game if it's not already installed.", Default = true)]
+        [Option("autoinstall", Required = false, HelpText = "如果游戏尚未安装则自动安装。", Default = true)]
         public new bool AutoInstall { get => base.AutoInstall.GetValueOrDefault(); set => base.AutoInstall = value; }
     }
 
@@ -306,7 +306,7 @@ $",
     Explicitly disabled STOP since we don't support that until we track active games
     Remove this message which causes a syntax error if implemented
 
-    [Verb(nameof(ActionEnum.Stop), HelpText = "Stop a specific game or all games currently opened by GameVault.")]
+    [Verb(nameof(ActionEnum.Stop), HelpText = "停止指定游戏或 GameVault 当前打开的所有游戏。")]
     public class CommandOptions_Stop : CommandOptions
     {
         public override ActionEnum Action { get => ActionEnum.Stop; set => base.Action = ActionEnum.Stop; }

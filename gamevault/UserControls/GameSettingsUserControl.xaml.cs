@@ -189,7 +189,7 @@ namespace gamevault.UserControls
 
             if (ViewModel.Game.Type == GameType.WINDOWS_PORTABLE)
             {
-                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to uninstall '{ViewModel.Game.Title}' ?", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要卸载 '{ViewModel.Game.Title}' 吗？", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                 if (result == MessageDialogResult.Affirmative)
                 {
                     try
@@ -203,13 +203,13 @@ namespace gamevault.UserControls
                     }
                     catch
                     {
-                        MainWindowViewModel.Instance.AppBarText = "Something went wrong when deleting the files. Maybe they are opened by another process.";
+                        MainWindowViewModel.Instance.AppBarText = "删除文件时出错。文件可能被其他进程占用。";
                     }
                 }
             }
             else if (ViewModel.Game.Type == GameType.WINDOWS_SETUP)
             {
-                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to uninstall '{ViewModel.Game.Title}' ?\nAs this is a Windows Setup Game, you will need to select an uninstall executable manually", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要卸载 '{ViewModel.Game.Title}' 吗？\n由于这是一个 Windows 安装游戏，你需要手动选择卸载程序", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                 if (result == MessageDialogResult.Affirmative)
                 {
                     string selectedUninstallerExecutablePath = "";
@@ -236,7 +236,7 @@ namespace gamevault.UserControls
                             System.Windows.Forms.DialogResult fileResult = dialog.ShowDialog();
                             if (fileResult == System.Windows.Forms.DialogResult.OK && File.Exists(dialog.FileName))
                             {
-                                MessageDialogResult pickResult = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to uninstall the game using '{Path.GetFileName(dialog.FileName)}' ?", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                                MessageDialogResult pickResult = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要使用 '{Path.GetFileName(dialog.FileName)}' 卸载游戏吗？", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                                 if (pickResult != MessageDialogResult.Affirmative)
                                 {
                                     return;
@@ -247,7 +247,7 @@ namespace gamevault.UserControls
                     }
                     if (!File.Exists(selectedUninstallerExecutablePath))
                     {
-                        MainWindowViewModel.Instance.AppBarText = "No valid uninstall executable selected";
+                        MainWindowViewModel.Instance.AppBarText = "未选择有效的卸载可执行文件";
                         return;
                     }
                     Process uninstProcess = null;
@@ -264,7 +264,7 @@ namespace gamevault.UserControls
                         }
                         catch
                         {
-                            MainWindowViewModel.Instance.AppBarText = $"Can not execute '{selectedUninstallerExecutablePath}'";
+                            MainWindowViewModel.Instance.AppBarText = $"无法执行 '{selectedUninstallerExecutablePath}'";
                         }
                     }
                     if (uninstProcess != null)
@@ -288,7 +288,7 @@ namespace gamevault.UserControls
             }
             else if (ViewModel.Game.Type == GameType.UNDETECTABLE)
             {
-                MainWindowViewModel.Instance.AppBarText = "Game Type cannot be determined";
+                MainWindowViewModel.Instance.AppBarText = "无法确定游戏类型";
             }
         }
 
@@ -331,7 +331,7 @@ namespace gamevault.UserControls
                     percentages[i] = 5;
                 }
                 int index = 0;
-                string[] names = { $"This Game ({ViewModel.Game.Title})", "Other installed GameVault Games", "Unmanaged Data", "Free Space" };
+                string[] names = { $"This Game ({ViewModel.Game.Title})", "其他已安装的 GameVault 游戏", "非管理数据", "可用空间" };
                 long[] tooltips = { currentGameSize, otherGamesSize, unmanagedDiskSize, drive.TotalFreeSpace };
                 Color[] colors = { Colors.DeepPink, Colors.LightSeaGreen, Colors.PaleVioletRed, Colors.DarkGray };
                 IEnumerable<ISeries> sliceSeries = percentages.AsPieSeries((value, series) =>
@@ -528,7 +528,7 @@ namespace gamevault.UserControls
                     }
                     catch
                     {
-                        MainWindowViewModel.Instance.AppBarText = "Failed to download image";
+                        MainWindowViewModel.Instance.AppBarText = "下载图片失败";
                     }
                 }
             }
@@ -630,7 +630,7 @@ namespace gamevault.UserControls
                     string changedGame = await WebHelper.PutAsync($"{SettingsViewModel.Instance.ServerUrl}/api/games/{ViewModel.Game.ID}", JsonSerializer.Serialize(updateGame));
                     ViewModel.Game = JsonSerializer.Deserialize<Game>(changedGame);
                     success = true;
-                    MainWindowViewModel.Instance.AppBarText = "Successfully updated image";
+                    MainWindowViewModel.Instance.AppBarText = "图片更新成功";
                 }
                 catch (Exception ex)
                 {
@@ -696,7 +696,7 @@ namespace gamevault.UserControls
                     bitmapSource = (BitmapSource)uiImgCurrentMergedGame.GetImageSource();
                 }
                 Clipboard.SetImage(bitmapSource);
-                MainWindowViewModel.Instance.AppBarText = "Image copied to Clipboard";
+                MainWindowViewModel.Instance.AppBarText = "图片已复制到剪贴板";
             }
             catch (Exception ex)
             {
@@ -790,7 +790,7 @@ namespace gamevault.UserControls
             }
             catch (Exception ex)
             {
-                MainWindowViewModel.Instance.AppBarText = $"Could not load metadata provider data. ({ex.Message})";
+                MainWindowViewModel.Instance.AppBarText = $"无法加载元数据提供者数据。({ex.Message})";
                 ViewModel.RemapSearchResults = null;
             }
             this.Cursor = null;
@@ -845,7 +845,7 @@ namespace gamevault.UserControls
                 string remappedGame = await WebHelper.PutAsync($"{SettingsViewModel.Instance.ServerUrl}/api/games/{gameId}", JsonSerializer.Serialize(updateGame));
                 ViewModel.Game = JsonSerializer.Deserialize<Game>(remappedGame);
                 success = true;
-                MainWindowViewModel.Instance.AppBarText = $"Successfully re-mapped {ViewModel.Game.Title}";
+                MainWindowViewModel.Instance.AppBarText = $"已成功重新映射 {ViewModel.Game.Title}";
             }
             catch (Exception ex)
             {
@@ -899,7 +899,7 @@ namespace gamevault.UserControls
         #region Edit Game Details
         private async void ClearUserData_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to wipe all manually edited custom metadata and images?\n\nAll fields will revert to the merged provider metadata (if available).\n\nThis action cannot be undone.", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to wipe all manually edited custom metadata and images?\n\nAll fields will revert to the merged provider metadata (if available).\n\nThis action cannot be undone.", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
             if (result == MessageDialogResult.Affirmative)
             {
                 int gameId = ViewModel.Game.ID;
@@ -917,7 +917,7 @@ namespace gamevault.UserControls
                 ViewModel.Game = JsonSerializer.Deserialize<Game>(remappedGame);
                 success = true;
                 ViewModel.UpdateGame = new UpdateGameDto() { UserMetadata = new UpdateGameUserMetadataDto() };
-                MainWindowViewModel.Instance.AppBarText = $"Successfully edited {ViewModel.Game.Title}";
+                MainWindowViewModel.Instance.AppBarText = $"已成功编辑 {ViewModel.Game.Title}";
             }
             catch (Exception ex)
             {

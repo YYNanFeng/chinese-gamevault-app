@@ -78,7 +78,7 @@ namespace gamevault.Windows
             if (!SkipBootTasks)
             {
                 await CheckForUpdates(this);
-                ViewModel.StatusText = "Checking License...";
+                ViewModel.StatusText = "正在检查许可证...";
                 string phalcodeLoginMessage = await LoginManager.Instance.PhalcodeLogin(true);
                 if (phalcodeLoginMessage != string.Empty)
                     ViewModel.AppBarText = phalcodeLoginMessage;
@@ -113,7 +113,7 @@ namespace gamevault.Windows
                 bool isDemoUserException = ViewModel.UserProfiles.Count == 1 && ViewModel.UserProfiles[0].ServerUrl == "https://demo.gamevau.lt";
                 if (!isDemoUserException)
                 {
-                    ViewModel.AppBarText = "Oops! You just reached a premium feature of GameVault - Upgrade now and support the devs!";
+                    ViewModel.AppBarText = "哎呀！你刚刚触及了 GameVault 的高级功能 - 立即升级以支持开发者！";
                     return;
                 }                
             }
@@ -154,11 +154,11 @@ namespace gamevault.Windows
                 string message = WebExceptionHelper.TryGetServerMessage(ex);
                 if (ViewModel.LoginStepIndex == (int)LoginStep.SignIn)
                 {
-                    ViewModel.LoginServerInfo = new BindableServerInfo(message == "" ? "Could not connect to server" : message);
+                    ViewModel.LoginServerInfo = new BindableServerInfo(message == "" ? "无法连接到服务器" : message);
                 }
                 else if (ViewModel.LoginStepIndex == (int)LoginStep.SignUp)
                 {
-                    ViewModel.SignUpServerInfo = new BindableServerInfo(message == "" ? "Could not connect to server" : message);
+                    ViewModel.SignUpServerInfo = new BindableServerInfo(message == "" ? "无法连接到服务器" : message);
                 }
             }
         }
@@ -237,14 +237,14 @@ namespace gamevault.Windows
         private void ValidateSignInData(LoginUser loginUser, bool isLogin)
         {
             if (ViewModel.UserProfiles.Any(user => user.Name == loginUser.Username))
-                throw new ArgumentException("Profile with this name already exists");
+                throw new ArgumentException("此名称的资料已存在");
 
             if (string.IsNullOrWhiteSpace(loginUser.ServerUrl))
-                throw new ArgumentException("ServerUrl is not set");
+                throw new ArgumentException("未设置服务器 URL");
 
             if (isLogin && !ViewModel.LoginServerInfo.IsAvailable)
             {
-                throw new ArgumentException("Server could not be reached");
+                throw new ArgumentException("无法连接到服务器");
             }
 
             loginUser.ServerUrl = ValidateUriScheme(loginUser.ServerUrl);
@@ -252,10 +252,10 @@ namespace gamevault.Windows
             if (!ViewModel.LoginUser.IsLoggedInWithSSO)
             {
                 if (string.IsNullOrWhiteSpace(loginUser.Username))
-                    throw new ArgumentException("Username is not set");
+                    throw new ArgumentException("未设置用户名");
 
                 if (string.IsNullOrWhiteSpace(loginUser.Password))
-                    throw new ArgumentException("Password is not set");
+                    throw new ArgumentException("未设置密码");
             }
         }
 
@@ -263,7 +263,7 @@ namespace gamevault.Windows
         {
             if (!calledByActivationLoop)
             {
-                ViewModel.StatusText = "Logging in...";
+                ViewModel.StatusText = "正在登录...";
                 ViewModel.LoginStepIndex = (int)LoginStep.LoadingAction;
 
                 if (await CheckIfServerIsOutdated(profile.ServerUrl))
@@ -335,7 +335,7 @@ namespace gamevault.Windows
                     }
                     catch (Exception ex)
                     {
-                        ViewModel.AppBarText = ex.Message == "NOID" ? LoginManager.Instance.GetServerLoginResponseMessage() : "Can not load user profile in offline mode";
+                        ViewModel.AppBarText = ex.Message == "NOID" ? LoginManager.Instance.GetServerLoginResponseMessage() : "无法在离线模式下加载用户资料";
                         ViewModel.LoginStepIndex = (int)LoginStep.ChooseProfile;
                     }
                 }
@@ -346,7 +346,7 @@ namespace gamevault.Windows
             LoginManager.Instance.SetUserProfile(profile);
             SettingsViewModel.Instance.Init();
 
-            ViewModel.StatusText = "Optimizing Cache...";
+            ViewModel.StatusText = "正在优化缓存...";
             await CacheHelper.OptimizeCache();
             if (ViewModel.RememberMe)
             {
@@ -385,7 +385,7 @@ namespace gamevault.Windows
                     profile = SetupUserProfile(ViewModel.SignupUser);
                     if (profile == null)
                     {
-                        ViewModel.AppBarText = "Failed to setup User Profile";
+                        ViewModel.AppBarText = "创建用户资料失败";
                         return;
                     }
                     await Login(profile, true);
@@ -402,22 +402,22 @@ namespace gamevault.Windows
         {
             if (string.IsNullOrWhiteSpace(ViewModel.SignupUser.ServerUrl))
             {
-                throw new Exception("Server URL is not set");
+                throw new Exception("未设置服务器 URL");
             }
             ViewModel.SignupUser.ServerUrl = ValidateUriScheme(ViewModel.SignupUser.ServerUrl);
             if (!ViewModel.SignupUser.IsLoggedInWithSSO)
             {
                 if (string.IsNullOrWhiteSpace(ViewModel.SignupUser.Password) || string.IsNullOrWhiteSpace(ViewModel.SignupUser.RepeatPassword))
                 {
-                    throw new Exception("Password is not set");
+                    throw new Exception("未设置密码");
                 }
                 if (ViewModel.SignupUser.Password != ViewModel.SignupUser.RepeatPassword)
                 {
-                    throw new Exception("Password must be equal");
+                    throw new Exception("两次输入的密码不一致");
                 }
                 if (string.IsNullOrWhiteSpace(ViewModel.SignupUser.Username))
                 {
-                    throw new Exception("Username is not set");
+                    throw new Exception("未设置用户名");
                 }
             }
         }
@@ -454,7 +454,7 @@ namespace gamevault.Windows
             if (sender is MenuItem menuItem)
             {
                 UserProfile profileToDelete = (UserProfile)((FrameworkElement)((ContextMenu)menuItem.Parent).TemplatedParent).DataContext;
-                MessageDialogResult result = await ((MetroWindow)this).ShowMessageAsync($"Are you sure you want to delete Profile '{profileToDelete.Name}'?", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                MessageDialogResult result = await ((MetroWindow)this).ShowMessageAsync($"你确定要删除资料 '{profileToDelete.Name}' 吗？", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                 if (result == MessageDialogResult.Affirmative)
                 {
                     ProfileManager.DeleteUserProfile(profileToDelete);
@@ -469,7 +469,7 @@ namespace gamevault.Windows
             {
                 UserProfile? profileToEdit = ViewModel.UserProfiles.FirstOrDefault(x => x.RootDir == ViewModel.EditUser.ID);
                 if (profileToEdit == null)
-                    throw new Exception("User Profile not found");
+                    throw new Exception("未找到用户资料");
                 if (profileToEdit.ServerUrl != ViewModel.EditUser.ServerUrl)
                 {
                     ProfileManager.DeleteUserProfile(profileToEdit);
@@ -516,7 +516,7 @@ namespace gamevault.Windows
             }
             catch (Exception ex)
             {
-                ViewModel.AppBarText = $"Failed to create demo user: {ex.Message}";
+                ViewModel.AppBarText = $"创建演示用户失败: {ex.Message}";
             }
         }
 
@@ -538,11 +538,11 @@ namespace gamevault.Windows
         {
             try
             {
-                ViewModel.StatusText = "Searching for Updates...";
+                ViewModel.StatusText = "正在搜索更新...";
                 StoreHelper = new StoreHelper();
                 if (true == await StoreHelper.UpdatesAvailable())
                 {
-                    ViewModel.StatusText = "Updating...";
+                    ViewModel.StatusText = "正在更新...";
                     await StoreHelper.DownloadAndInstallAllUpdatesAsync(root);
                 }
                 App.IsWindowsPackage = true;
@@ -564,7 +564,7 @@ namespace gamevault.Windows
                     string version = (string)obj[0]["tag_name"];
                     if (Convert.ToInt32(version.Replace(".", "")) > Convert.ToInt32(SettingsViewModel.Instance.Version.Replace(".", "")))
                     {
-                        MessageBoxResult result = MessageBox.Show($"A new version of GameVault is now available on GitHub.\nCurrent Version '{SettingsViewModel.Instance.Version}' -> new Version '{version}'\nWould you like to download it? (No automatic installation)", "Info", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                        MessageBoxResult result = MessageBox.Show($"GameVault 新版本已在 GitHub 上发布。\n当前版本 '{SettingsViewModel.Instance.Version}' -> 新版本 '{version}'\n是否要下载？（无自动安装）", "提示", MessageBoxButton.YesNo, MessageBoxImage.Information);
                         if (result == MessageBoxResult.Yes)
                         {
                             string downloadUrl = (string)obj[0]["assets"][0]["browser_download_url"];
@@ -596,12 +596,12 @@ namespace gamevault.Windows
             {
                 try
                 {
-                    MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync("CLIENT-SERVER-INCOMPABILITY DETECTED",
-                          $"Your GameVault Client is not compatible with the GameVault Server you are using (<15.0.0). This server is too old for your client.\r\n\r\nYou have the following options:\r\n",
+                    MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync("检测到客户端-服务器不兼容",
+                          $"你的 GameVault 客户端与你使用的 GameVault 服务器不兼容（<15.0.0）。此服务器版本太旧。\r\n\r\n你可以选择以下操作：\r\n",
                           MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings()
                           {
-                              AffirmativeButtonText = "Get older client version from GitHub",
-                              NegativeButtonText = "Update the server",
+                              AffirmativeButtonText = "从 GitHub 获取旧版客户端",
+                              NegativeButtonText = "更新服务器",
                               AnimateHide = false,
                               DialogMessageFontSize = 20,
                               DialogTitleFontSize = 25
@@ -648,7 +648,7 @@ namespace gamevault.Windows
                 Preferences.Set(AppConfigKey.AdditionalRequestHeaders, ViewModel.AdditionalRequestHeaders.Where(rh => !string.IsNullOrWhiteSpace(rh.Name) && !string.IsNullOrWhiteSpace(rh.Value)), ProfileManager.ProfileConfigFile);
                 WebHelper.SetAdditionalDefaultRequestHeaders(ViewModel.AdditionalRequestHeaders?.ToList());
                 ViewModel.LoginStepIndex = (int)LoginStep.ChooseProfile;
-                ViewModel.AppBarText = "Successfully saved additional request headers";
+                ViewModel.AppBarText = "成功保存附加请求头";
             }
             catch (Exception ex) { ViewModel.AppBarText = ex.Message; }
         }

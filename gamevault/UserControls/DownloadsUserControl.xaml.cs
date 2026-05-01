@@ -1,4 +1,4 @@
-﻿using gamevault.Helper;
+using gamevault.Helper;
 using gamevault.Models;
 using gamevault.ViewModels;
 using MahApps.Metro.Controls.Dialogs;
@@ -98,7 +98,7 @@ namespace gamevault.UserControls
                  }
                  catch (FormatException exFormat)
                  {
-                     MainWindowViewModel.Instance.AppBarText = "The offline cache is corrupted";
+                     MainWindowViewModel.Instance.AppBarText = "离线缓存已损坏";
                  }
                  catch (Exception ex)
                  {
@@ -161,7 +161,7 @@ namespace gamevault.UserControls
         {
             if (SettingsViewModel.Instance.RootDirectories.Count == 0)
             {
-                MainWindowViewModel.Instance.AppBarText = "No Root Directory configured! Go to ⚙️Settings->Data";
+                MainWindowViewModel.Instance.AppBarText = "未配置根目录！请前往 ⚙️设置->数据";
                 return;
             }
             var installLocationPicker = new InstallLocationUserControl();
@@ -172,12 +172,12 @@ namespace gamevault.UserControls
 
             if (!Directory.Exists(selectedDirectory))
             {
-                MainWindowViewModel.Instance.AppBarText = "Selected directory does not exist";
+                MainWindowViewModel.Instance.AppBarText = "所选目录不存在";
                 return;
             }
             if (LoginManager.Instance.IsLoggedIn() == false)
             {
-                MainWindowViewModel.Instance.AppBarText = "You are not logged in or offline";
+                MainWindowViewModel.Instance.AppBarText = "你未登录或处于离线状态";
                 return;
             }
             if (IsAlreadyDownloading(game.ID))
@@ -211,7 +211,7 @@ namespace gamevault.UserControls
             if (DownloadsViewModel.Instance.DownloadedGames.Where(gameUC => gameUC.GetGameId() == id).Count() > 0)
             {
                 MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"This game was already downloaded. Do you want to overwrite this file?",
-                    "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                    "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                 if (result == MessageDialogResult.Affirmative)
                 {
                     return false;
@@ -248,7 +248,7 @@ namespace gamevault.UserControls
 
         private async void DeleteAllDownloads_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to delete all canceled and completed downloads?\n\nThis cannot be undone.", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要删除所有已取消和已完成的下载吗？\n\n此操作无法撤销。", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
 
             if (result == MessageDialogResult.Affirmative)
             {

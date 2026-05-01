@@ -55,15 +55,15 @@ namespace gamevault.Helper
         }
         public void NoInternetException()
         {
-            MessageBox.Show("Cannot connect to microsoft services", "Connection failed", MessageBoxButton.OK, MessageBoxImage.Warning);          
+            MessageBox.Show("无法连接到微软服务", "连接失败", MessageBoxButton.OK, MessageBoxImage.Warning);          
         }
         private void PackageException()
         {
-            MessageBox.Show("Updates were not installed as intended.", "Update failed", MessageBoxButton.OK, MessageBoxImage.Warning);            
+            MessageBox.Show("更新未能按预期安装。", "更新失败", MessageBoxButton.OK, MessageBoxImage.Warning);            
         }
         private void UpdateCanceledException()
         {
-            MessageBox.Show("Updates were not installed as intended.", "Update canceled", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("更新未能按预期安装。", "更新已取消", MessageBoxButton.OK, MessageBoxImage.Warning);
             //MessageBox.Show("GameVault can not start because the Updates were not installed.", "Updates not installed", MessageBoxButton.OK, MessageBoxImage.Information);           
         }
     }

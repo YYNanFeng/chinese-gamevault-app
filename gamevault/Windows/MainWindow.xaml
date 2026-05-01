@@ -64,7 +64,7 @@
             </mah:HamburgerMenu.Content>
         </mah:HamburgerMenu>
         <StackPanel  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,300,0,0">
-            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://phalco.de/support-us" MouseLeftButtonUp="Shortlink_Click" ToolTip="Open Donations" Cursor="Hand">
+            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://phalco.de/support-us" MouseLeftButtonUp="Shortlink_Click" ToolTip="打开捐赠页" Cursor="Hand">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Style.Triggers>
@@ -76,7 +76,7 @@
                 </Border.Style>
                 <iconPacks:PackIconMaterial Kind="HandCoin" Margin="4,4,0,0" Width="28" Height="28" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
             </Border>
-            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://discord.com/invite/NEdNen2dSu" MouseLeftButtonUp="Shortlink_Click" ToolTip="Open Discord" Cursor="Hand">
+            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://discord.com/invite/NEdNen2dSu" MouseLeftButtonUp="Shortlink_Click" ToolTip="打开 Discord" Cursor="Hand">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Style.Triggers>
@@ -88,7 +88,7 @@
                 </Border.Style>
                 <iconPacks:PackIconMaterial Kind="Discord" Margin="4,4,0,0" Width="28" Height="28" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
             </Border>
-            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://gamevau.lt/docs/intro" MouseLeftButtonUp="Shortlink_Click" ToolTip="Open Documentation" Cursor="Hand">
+            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://gamevau.lt/docs/intro" MouseLeftButtonUp="Shortlink_Click" ToolTip="打开文档" Cursor="Hand">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Style.Triggers>
@@ -100,7 +100,7 @@
                 </Border.Style>
                 <iconPacks:PackIconMaterial Kind="BookOpenPageVariant" Margin="4,4,0,0" Width="28" Height="28" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
             </Border>
-            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://github.com/orgs/Phalcode/repositories" MouseLeftButtonUp="Shortlink_Click" ToolTip="Open GitHub" Cursor="Hand">
+            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://github.com/orgs/Phalcode/repositories" MouseLeftButtonUp="Shortlink_Click" ToolTip="打开 GitHub" Cursor="Hand">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Style.Triggers>
@@ -112,7 +112,7 @@
                 </Border.Style>
                 <iconPacks:PackIconMaterial Kind="Github" Margin="4,4,0,0" Width="28" Height="28" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
             </Border>
-            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://github.com/Phalcode/gamevault-app/issues/new/choose" MouseLeftButtonUp="Shortlink_Click" ToolTip="Bug Report" Cursor="Hand">
+            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" Tag="https://github.com/Phalcode/gamevault-app/issues/new/choose" MouseLeftButtonUp="Shortlink_Click" ToolTip="Bug 报告" Cursor="Hand">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Style.Triggers>
@@ -124,7 +124,7 @@
                 </Border.Style>
                 <iconPacks:PackIconMaterial Kind="Bug" Margin="4,4,0,0" Width="28" Height="28" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
             </Border>
-            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" MouseLeftButtonUp="News_Click" ToolTip="Open News" Cursor="Hand">
+            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,10" MouseLeftButtonUp="News_Click" ToolTip="打开新闻" Cursor="Hand">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Style.Triggers>
@@ -138,7 +138,7 @@
                     <iconPacks:PackIconMaterial Kind="NewspaperVariantMultiple" Margin="4,4,0,0" Width="28" Height="28" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
                 </mah:Badged>
             </Border>
-            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,4.1" MouseLeftButtonUp="Premium_Click" ToolTip="Open GameVault Plus Website" Cursor="Hand">
+            <Border CornerRadius="5" Padding="2" Height="40" Width="40" Margin="4.1,0,0,4.1" MouseLeftButtonUp="Premium_Click" ToolTip="打开 GameVault Plus 网站" Cursor="Hand">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Background" Value="{DynamicResource GameVault.Brushes.Button}"/>
@@ -175,7 +175,7 @@
                         TitleVisibility="Collapsed">
             <Grid>
                 <TextBlock VerticalAlignment="Center" Text="{Binding AppBarText}" FontSize="25" Margin="10,0,35,0"/>
-                <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Focusable="False" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="Copy Message" Click="CopyMessage_Click">
+                <Button Style="{StaticResource ButtonWrapper}" VerticalAlignment="Center" HorizontalAlignment="Right" Focusable="False" Cursor="Hand" Width="25" Height="25" Margin="0,0,5,0" ToolTip="复制消息" Click="CopyMessage_Click">
                     <Grid Style="{DynamicResource HoverEffect}"  Background="Transparent">
                         <Path Data="{StaticResource IconCopy}" Fill="{DynamicResource MahApps.Brushes.ThemeForeground}" RenderTransformOrigin="0.5,0.5">
                             <Path.RenderTransform>

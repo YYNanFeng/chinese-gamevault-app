@@ -402,7 +402,7 @@ namespace gamevault.UserControls
             {
                 string shareLink = $"gamevault://show?gameid={ViewModel?.Game?.ID}";
                 System.Windows.Clipboard.SetText(shareLink);
-                MainWindowViewModel.Instance.AppBarText = "Sharelink copied to clipboard";
+                MainWindowViewModel.Instance.AppBarText = "分享链接已复制到剪贴板";
             }
             catch { }
         }
@@ -421,7 +421,7 @@ namespace gamevault.UserControls
                     MainWindowViewModel.Instance.AppBarText = CloudSaveStatus.Offline;
                     return;
                 }
-                MainWindowViewModel.Instance.AppBarText = "Uploading Savegame to the Server...";
+                MainWindowViewModel.Instance.AppBarText = "正在上传存档到服务器...";
                 ((FrameworkElement)sender).IsEnabled = false;
                 string status = await SaveGameHelper.Instance.BackupSaveGame(ViewModel!.Game!.ID);
                 MainWindowViewModel.Instance.AppBarText = status;
@@ -442,7 +442,7 @@ namespace gamevault.UserControls
                     MainWindowViewModel.Instance.Settings.SetTabIndex(4);
                     return;
                 }
-                MainWindowViewModel.Instance.AppBarText = $"Syncing cloud save...";
+                MainWindowViewModel.Instance.AppBarText = $"正在同步云存档...";
                 ((FrameworkElement)sender).IsEnabled = false;
                 string installationDir = InstallViewModel.Instance.InstalledGames.First(g => g.Key.ID == ViewModel!.Game!.ID).Value;
                 string status = await SaveGameHelper.Instance.RestoreBackup(ViewModel!.Game!.ID, installationDir);

@@ -47,17 +47,17 @@ namespace gamevault.UserControls
                 Directory.Delete(LoginManager.Instance.GetUserProfile().ImageCacheDir, true);
                 Directory.CreateDirectory(LoginManager.Instance.GetUserProfile().ImageCacheDir);
                 ViewModel.ImageCacheSize = 0;
-                MainWindowViewModel.Instance.AppBarText = "Image cache cleared";
+                MainWindowViewModel.Instance.AppBarText = "图片缓存已清除";
             }
             catch
             {
-                MainWindowViewModel.Instance.AppBarText = "Something went wrong while the image cache was cleared";
+                MainWindowViewModel.Instance.AppBarText = "清除图片缓存时出错";
             }
 
         }
         private async void ClearOfflineCache_Clicked(object sender, RoutedEventArgs e)
         {
-            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want delete the offline cache? \nThis can lead to games not being displayed correctly when you are offline.", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要删除离线缓存吗？ \n这可能导致离线时游戏无法正确显示。", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
             if (result == MessageDialogResult.Affirmative)
             {
                 try
@@ -71,11 +71,11 @@ namespace gamevault.UserControls
                         File.Delete(LoginManager.Instance.GetUserProfile().OfflineCache);
                     }
                     ViewModel.OfflineCacheSize = 0;
-                    MainWindowViewModel.Instance.AppBarText = "Offline cache cleared";
+                    MainWindowViewModel.Instance.AppBarText = "离线缓存已清除";
                 }
                 catch
                 {
-                    MainWindowViewModel.Instance.AppBarText = "Something went wrong while the offline cache was cleared";
+                    MainWindowViewModel.Instance.AppBarText = "清除离线缓存时出错";
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace gamevault.UserControls
         private async void Logout_Click(object sender, RoutedEventArgs e)
         {
             ((FrameworkElement)sender).IsEnabled = false;
-            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to log out?", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要登出吗？", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
             if (result == MessageDialogResult.Affirmative)
             {
                 try
@@ -186,7 +186,7 @@ namespace gamevault.UserControls
         private async void LogoutFromAllDevices_Click(object sender, RoutedEventArgs e)
         {
             ((FrameworkElement)sender).IsEnabled = false;
-            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to log out from all devices?", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要从所有设备登出吗？", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
             if (result == MessageDialogResult.Affirmative)
             {
                 try
@@ -241,7 +241,7 @@ namespace gamevault.UserControls
             }
             ViewModel.DownloadLimit = ViewModel.DownloadLimitUIValue;
             Preferences.Set(AppConfigKey.DownloadLimit, ViewModel.DownloadLimit, LoginManager.Instance.GetUserProfile().UserConfigFile);
-            MainWindowViewModel.Instance.AppBarText = "Successfully saved download limit";
+            MainWindowViewModel.Instance.AppBarText = "下载限制保存成功";
         }
 
         private void EditUser_Click(object sender, RoutedEventArgs e)
@@ -250,7 +250,7 @@ namespace gamevault.UserControls
             {
                 MainWindowViewModel.Instance.OpenPopup(new UserSettingsUserControl(LoginManager.Instance.GetCurrentUser()) { Width = 1200, Height = 800, Margin = new Thickness(50) });
             }
-            else { MainWindowViewModel.Instance.AppBarText = "You are not logged in or offline"; }
+            else { MainWindowViewModel.Instance.AppBarText = "你未登录或处于离线状态"; }
         }
         private async void PhalcodeLoginLogout_Click(object sender, RoutedEventArgs e)
         {
@@ -263,7 +263,7 @@ namespace gamevault.UserControls
             }
             else
             {
-                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to log out of your Phalcode account? GameVault Plus features will no longer be usable.", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要登出 Phalcode 账户吗？GameVault Plus 功能将不再可用。", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                 if (result == MessageDialogResult.Affirmative)
                 {
                     LoginManager.Instance.PhalcodeLogout();
@@ -320,7 +320,7 @@ namespace gamevault.UserControls
                 {
                     MainWindowViewModel.Instance.SetActiveControl(MainControl.Settings);
                     MainWindowViewModel.Instance.Settings.SetTabIndex(4);
-                    MainWindowViewModel.Instance.AppBarText = "Oops! You just reached a premium feature of GameVault - Upgrade now and support the devs!";
+                    MainWindowViewModel.Instance.AppBarText = "这是 GameVault 的高级功能 - 立即升级并支持开发者！";
                 }
                 catch { }
                 return;
@@ -487,7 +487,7 @@ namespace gamevault.UserControls
         {
             if (uiCBCommunityThemes.SelectedItem == null)
             {
-                MainWindowViewModel.Instance.AppBarText = "No Theme selected";
+                MainWindowViewModel.Instance.AppBarText = "未选择主题";
                 return;
             }
             ((FrameworkElement)sender).IsEnabled = false;
@@ -504,7 +504,7 @@ namespace gamevault.UserControls
                     uiCbTheme.SelectedIndex = installedThemeIndex;
                 }
                 catch { }
-                MainWindowViewModel.Instance.AppBarText = $"Successfully installed {theme.DisplayName}";
+                MainWindowViewModel.Instance.AppBarText = $"已成功安装 {theme.DisplayName}";
             }
             catch (Exception ex)
             {
@@ -546,7 +546,7 @@ namespace gamevault.UserControls
         private void ExtractionPasswordSave_Click(object sender, RoutedEventArgs e)
         {
             Preferences.Set(AppConfigKey.ExtractionPassword, uiPwExtraction.Password, LoginManager.Instance.GetUserProfile().UserConfigFile, true);
-            MainWindowViewModel.Instance.AppBarText = "Successfully saved extraction password";
+            MainWindowViewModel.Instance.AppBarText = "解压密码保存成功";
         }
         private async void IgnoredExecutablesReset_Click(object sender, RoutedEventArgs e)
         {
@@ -585,7 +585,7 @@ namespace gamevault.UserControls
 
         private async void RestoreSteamShortcutBackup_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to restore the backup? Your current shortcuts will be reset to the state when the backup was created. This can lead to some shortcuts being lost.", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+            MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要恢复备份吗？当前的快捷方式将重置为创建备份时的状态。这可能导致部分快捷方式丢失。", "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
             if (result == MessageDialogResult.Affirmative)
             {
                 SteamHelper.RestoreBackup();
@@ -622,7 +622,7 @@ namespace gamevault.UserControls
                 Preferences.Set(AppConfigKey.CustomCloudSaveManifests, result, LoginManager.Instance.GetUserProfile().UserConfigFile);
             }
             catch { }
-            MainWindowViewModel.Instance.AppBarText = "Successfully saved custom Ludusavi Manifests";
+            MainWindowViewModel.Instance.AppBarText = "自定义 Ludusavi 清单保存成功";
         }
         private async void AddRootDirectory_Click(object sender, RoutedEventArgs e)
         {
@@ -660,7 +660,7 @@ namespace gamevault.UserControls
 
                 duplicateMessage += $"\n\n'{matchingGame?.Key?.Title}' is already installed at:\n{duplicate.Value}";
             }
-            await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync("Duplicate game installation detected", duplicateMessage, MessageDialogStyle.Affirmative, new MetroDialogSettings() { AffirmativeButtonText = "Ok", DialogTitleFontSize = 20, AnimateHide = false });
+            await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync("检测到重复的游戏安装", duplicateMessage, MessageDialogStyle.Affirmative, new MetroDialogSettings() { AffirmativeButtonText = "确定", DialogTitleFontSize = 20, AnimateHide = false });
         }
         private async void RemoveRootDirectory_Click(object sender, RoutedEventArgs e)
         {

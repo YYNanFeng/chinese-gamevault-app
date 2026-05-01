@@ -6,7 +6,7 @@
          xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:gamevault.Windows"
         mc:Ignorable="d"
-        Title="Unhandled Error" Height="150" Width="450" ShowMinButton="False" ShowMaxRestoreButton="False" Topmost="True" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+        Title="未处理的错误" Height="150" Width="450" ShowMinButton="False" ShowMaxRestoreButton="False" Topmost="True" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="60" Margin="10,0,0,10">
             <Image Source="pack://application:,,,/gamevault;component/Resources/Images/icon.ico" />
@@ -17,10 +17,10 @@
             </Path>
         </Grid>
         <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="13">
-            An unhandeled Error has occured in GameVault <LineBreak/>
-           You can view technical details in the Error Log that has been created.
+            GameVault 中发生了一个未处理的错误 <LineBreak/>
+           你可以在已创建的错误日志中查看技术细节。
         </TextBlock>
-        <Button Content="Open Log Folder" Width="100" Height="20" Margin="0,0,120,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="OpenLog_Click"/>
-        <Button Content="Close" Margin="0,0,10,10" Width="100" Height="20" Click="Close_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Button Content="打开日志文件夹" Width="100" Height="20" Margin="0,0,120,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="OpenLog_Click"/>
+        <Button Content="关闭" Margin="0,0,10,10" Width="100" Height="20" Click="Close_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
     </Grid>
 </mah:MetroWindow>

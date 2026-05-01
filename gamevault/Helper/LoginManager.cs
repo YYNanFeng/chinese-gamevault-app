@@ -1,4 +1,4 @@
-﻿using gamevault.Models;
+using gamevault.Models;
 using gamevault.ViewModels;
 using gamevault.Windows;
 using IdentityModel.Client;
@@ -166,7 +166,7 @@ namespace gamevault.Helper
                     {
                         uiWebView.Dispose();
                         m_LoginState = LoginState.Error;
-                        m_LoginMessage = "Authentication canceled by user.";
+                        m_LoginMessage = "用户取消了身份验证。";
                         tcs.SetResult(LoginState.Error);
                     }
                 };
@@ -310,7 +310,7 @@ namespace gamevault.Helper
             {
                 if (loginResult.Error == "UserCancel")
                 {
-                    returnMessage = "Phalcode Sign-in aborted. You can choose to sign in later in the settings.";
+                    returnMessage = "Phalcode 登录已中止。你可以在设置中选择稍后登录。";
                     Preferences.DeleteKey(AppConfigKey.Phalcode1.ToString(), ProfileManager.ProfileConfigFile);
                 }
             }
@@ -445,7 +445,7 @@ namespace gamevault.Helper
             if (!IsLoggedIn())
             {
                 SwitchToOfflineMode();
-                MainWindowViewModel.Instance.AppBarText = "No connection to the server. You are now in offline mode.";
+                MainWindowViewModel.Instance.AppBarText = "无法连接到服务器。你现在处于离线模式。";
             }
         }
         public void StopOnlineTimer()
@@ -476,7 +476,7 @@ namespace gamevault.Helper
                     if (IsLoggedIn())
                     {
                         MainWindowViewModel.Instance.OnlineState = System.Windows.Visibility.Collapsed;
-                        MainWindowViewModel.Instance.AppBarText = "Connected to the server. You’re back online.";
+                        MainWindowViewModel.Instance.AppBarText = "已连接到服务器。你已恢复在线。";
                     }
                 }
                 else

@@ -48,7 +48,7 @@ namespace gamevault.UserControls
                 }
                 catch
                 {
-                    MainWindowViewModel.Instance.AppBarText = "Can not access community tab while offline";
+                    MainWindowViewModel.Instance.AppBarText = "离线状态下无法访问社区标签页";
                 }
             }
         }
@@ -221,7 +221,7 @@ namespace gamevault.UserControls
                 }
             }
             catch { }
-            return "Last played"; //default is 'Last played'
+            return "上次游玩"; //default is 'Last played'
         }
         private User[] BringCurrentUserToTop(User[] users)
         {
@@ -245,17 +245,17 @@ namespace gamevault.UserControls
             {
                 switch (e.AddedItems[0])
                 {
-                    case "Time played":
+                    case "游玩时长":
                         {
                             ViewModel.UserProgresses = ViewModel.UserProgresses.OrderByDescending(o => o.MinutesPlayed).ToList();
                         }
                         break;
-                    case "Last played":
+                    case "上次游玩":
                         {
                             ViewModel.UserProgresses = ViewModel.UserProgresses.OrderByDescending(o => o.LastPlayedAt).ToList();
                         }
                         break;
-                    case "State":
+                    case "状态":
                         {
                             ViewModel.UserProgresses = ViewModel.UserProgresses.OrderByDescending(o => o.State).ToList();
                         }
@@ -272,7 +272,7 @@ namespace gamevault.UserControls
         {
             if (((Progress)((FrameworkElement)sender).DataContext).Game == null)
             {
-                MainWindowViewModel.Instance.AppBarText = "Cannot open game";
+                MainWindowViewModel.Instance.AppBarText = "无法打开游戏";
                 return;
             }
             MainWindowViewModel.Instance.SetActiveControl(new GameViewUserControl(((Progress)((FrameworkElement)sender).DataContext).Game));
@@ -281,7 +281,7 @@ namespace gamevault.UserControls
         {
             if (!LoginManager.Instance.IsLoggedIn())
             {
-                MainWindowViewModel.Instance.AppBarText = "You are not logged in or offline";
+                MainWindowViewModel.Instance.AppBarText = "你未登录或处于离线状态";
                 return;
             }
             if (uiBtnReloadUser.IsEnabled == false || (e.GetType() == typeof(KeyEventArgs) && ((KeyEventArgs)e).Key != Key.F5))
@@ -317,8 +317,8 @@ namespace gamevault.UserControls
             try
             {
                 Progress dataContext = (Progress)((FrameworkElement)sender).DataContext;
-                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Are you sure you want to delete the progress of '{dataContext.Game.Title}' ?",
-                    "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"确定要删除 '{dataContext.Game.Title}' 的进度吗？",
+                    "", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
                 if (result == MessageDialogResult.Affirmative)
                 {
                     await WebHelper.DeleteAsync(@$"{SettingsViewModel.Instance.ServerUrl}/api/progresses/user/{ViewModel?.CurrentShownUser?.ID}/game/{dataContext?.Game.ID}");
@@ -328,7 +328,7 @@ namespace gamevault.UserControls
                     ViewModel.UserProgresses = null;
                     ViewModel.UserProgresses = copy;
 
-                    MainWindowViewModel.Instance.AppBarText = $"Successfully deleted progress";
+                    MainWindowViewModel.Instance.AppBarText = $"已成功删除进度";
                 }
             }
             catch (Exception ex)

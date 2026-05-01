@@ -14,10 +14,10 @@
         <Expander x:Name="uiInstalledGames" Margin="10" mah:ExpanderHelper.HeaderDownStyle="{StaticResource CustomExpanderToggleButton}" BorderBrush="{x:Null}" Expanded="InstalledGames_Toggled" Collapsed="InstalledGames_Toggled">
             <Expander.Header>
                 <Grid Height="35">
-                    <TextBlock Text="{Binding Path=InstalledGames.Count,StringFormat='{}Installed Games ({0})'}" Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" FontWeight="Bold" HorizontalAlignment="Left" FontSize="20" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Path=InstalledGames.Count,StringFormat='{}已安装的游戏 ({0})'}" Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" FontWeight="Bold" HorizontalAlignment="Left" FontSize="20" VerticalAlignment="Center"/>
                     <TextBox HorizontalAlignment="Center" Width="376" Margin="0,4,44,4" Style="{DynamicResource SearchTextBox}" TextChanged="Search_TextChanged"/>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
-                        <TextBlock Text="Rows" Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" VerticalAlignment="Center" FontSize="15" Margin="0,0,10,0"/>
+                        <TextBlock Text="行数" Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" VerticalAlignment="Center" FontSize="15" Margin="0,0,10,0"/>
                         <mah:NumericUpDown x:Name="uiRowsUpDown" ButtonsAlignment="Opposite" Minimum="1" ValueChanged="Rows_ValueChanged" SwitchUpDownButtons="True" Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
                         <mah:NumericUpDown Value="{Binding Path=InstalledGames.Count,Mode=OneWay}" ValueChanged="Collection_Updated" Visibility="Collapsed"/>
                     </StackPanel>
@@ -37,11 +37,11 @@
                             </Style>
                         </StackPanel.Style>
                         <Image Source="pack://application:,,,/gamevault;component/Resources/Images/library_NoGameFound.png" RenderOptions.EdgeMode="Aliased" Height="190"/>
-                        <TextBlock Text="No Games found" FontSize="20" HorizontalAlignment="Center" Margin="0,-10,0,0"/>
+                        <TextBlock Text="未找到游戏" FontSize="20" HorizontalAlignment="Center" Margin="0,-10,0,0"/>
                         <TextBlock HorizontalAlignment="Center" FontSize="10" Margin="0,5,0,10" Opacity="0.8">
                             <Hyperlink TextDecorations="Baseline" NavigateUri="https://gamevau.lt/docs/troubleshooting/#games-not-appearing-in-the-installations--servers-list" RequestNavigate="Hyperlink_RequestNavigate" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}">
                                 <Hyperlink.Inlines>
-                                    <Run Text="Troubleshooting"/>
+                                    <Run Text="故障排除"/>
                                 </Hyperlink.Inlines>
                             </Hyperlink>
                         </TextBlock>
@@ -123,7 +123,7 @@
                                                     <local:CacheImage Stretch="Fill" ImageCacheType="GameCover" Data="{Binding Key}" CornerRadius="8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     <Border Style="{StaticResource UpdateAvailableCheck}" Background="IndianRed" CornerRadius="5" VerticalAlignment="Bottom" Margin="0,0,0,0">
 
-                                                        <TextBlock Text="Update available!" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,3,0,3"/>
+                                                        <TextBlock Text="有更新可用！" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,3,0,3"/>
                                                     </Border>
                                                 </Grid>
                                             </Border>

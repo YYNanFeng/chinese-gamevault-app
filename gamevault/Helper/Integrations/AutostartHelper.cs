@@ -45,14 +45,14 @@ namespace gamevault.Helper
                     StartupTaskState newState = await startupTask.RequestEnableAsync();
                     if (newState != StartupTaskState.Enabled)
                     {
-                        MainWindowViewModel.Instance.AppBarText = "Unable to activate autostart.";
+                        MainWindowViewModel.Instance.AppBarText = "无法激活开机自启。";
                     }
                     break;
                 case StartupTaskState.DisabledByUser:
-                    MainWindowViewModel.Instance.AppBarText = "Autostart was disabled manually. Please access task manager to reactivate it.";
+                    MainWindowViewModel.Instance.AppBarText = "开机自启已被手动禁用。请通过任务管理器重新启用。";
                     break;
                 case StartupTaskState.DisabledByPolicy:
-                    MainWindowViewModel.Instance.AppBarText = "Autostart is either disabled due to policy or not supported on your device.";
+                    MainWindowViewModel.Instance.AppBarText = "开机自启因策略禁用或你的设备不支持。";
                     break;
                 case StartupTaskState.Enabled:
                     startupTask.Disable();

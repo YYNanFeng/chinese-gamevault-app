@@ -13,10 +13,10 @@
         </Grid.RowDefinitions>
         <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground2}" Grid.Row="0">
             <Grid>
-                <TextBlock Text="Downloads" FontSize="35" Margin="20,0,0,0" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+                <TextBlock Text="下载" FontSize="35" Margin="20,0,0,0" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
             </Grid>
         </Border>
-        <Button Style="{StaticResource ButtonWrapper}"  Grid.Row="1"  ToolTip="Delete all Downloads" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="0,15,20,0" Panel.ZIndex="1" Click="DeleteAllDownloads_Click">
+        <Button Style="{StaticResource ButtonWrapper}"  Grid.Row="1"  ToolTip="删除所有下载" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="0,15,20,0" Panel.ZIndex="1" Click="DeleteAllDownloads_Click">
             <Grid Style="{DynamicResource HoverEffect}" Background="Transparent" RenderTransformOrigin="0.5,0.5">
                 <Path Data="{StaticResource IconTrash}" Fill="IndianRed" Margin="0,0,-20,-20">
                     <Path.RenderTransform>
@@ -28,7 +28,7 @@
                 </Grid.RenderTransform>
             </Grid>
         </Button>
-        <TextBlock Grid.Row="1" Text="Downloads empty" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Grid.Row="1" Text="下载为空" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Visibility" Value="Collapsed" />

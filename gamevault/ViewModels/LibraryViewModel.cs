@@ -54,7 +54,7 @@ namespace gamevault.ViewModels
             {
                 var dict = new Dictionary<string, string>
                 {
-                    {"Title","sort_title"},
+                    {"标题","sort_title"},
                     {"Size","size" },
                     {"Date Added","created_at" },
                     {"Release Date","metadata.release_date" },

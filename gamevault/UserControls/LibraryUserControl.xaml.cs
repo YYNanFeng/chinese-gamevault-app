@@ -103,7 +103,7 @@ namespace gamevault.UserControls
 
             if (!LoginManager.Instance.IsLoggedIn())
             {
-                MainWindowViewModel.Instance.AppBarText = "You are offline";
+                MainWindowViewModel.Instance.AppBarText = "你处于离线状态";
                 return;
             }
             if (!uiExpanderGameCards.IsExpanded)
@@ -262,7 +262,7 @@ namespace gamevault.UserControls
                     ViewModel.NextPage = gameResult?.Links.Next;
                     if (gameResult == null || gameResult.Data == null)
                     {
-                        MainWindowViewModel.Instance.AppBarText = "Failed to load next Page";
+                        MainWindowViewModel.Instance.AppBarText = "加载下一页失败";
                         return;
                     }
                     await ProcessGamesData(gameResult);

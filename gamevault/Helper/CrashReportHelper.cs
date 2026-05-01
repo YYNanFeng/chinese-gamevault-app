@@ -28,7 +28,7 @@ namespace gamevault.Helper
                     sysInfo += "\n" + GetSysInfo();
                 }
                 catch { }
-                CrashReport crashReport = new CrashReport { source = "GameVault Client", message = $"({unhandledExceptionType}): {errrorMessage}", stackTrace = stackTrace, systemInfo = sysInfo };
+                CrashReport crashReport = new CrashReport { source = "GameVault 客户端", message = $"({unhandledExceptionType}): {errrorMessage}", stackTrace = stackTrace, systemInfo = sysInfo };
                 string parameter = System.Text.Json.JsonSerializer.Serialize(crashReport);
                 using (System.Net.WebClient wc = new System.Net.WebClient())
                 {

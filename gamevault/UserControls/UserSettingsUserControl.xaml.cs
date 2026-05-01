@@ -107,7 +107,7 @@ namespace gamevault.UserControls
                     }
                     catch
                     {
-                        MainWindowViewModel.Instance.AppBarText = "Failed to download image";
+                        MainWindowViewModel.Instance.AppBarText = "下载图片失败";
                     }
                 }
             }
@@ -275,7 +275,7 @@ namespace gamevault.UserControls
                             {
                                 MainWindowViewModel.Instance.SetActiveControl(MainControl.Settings);
                                 MainWindowViewModel.Instance.Settings.SetTabIndex(4);
-                                MainWindowViewModel.Instance.AppBarText = "Oops! You just reached a premium feature of GameVault - Upgrade now and support the devs!";
+                                MainWindowViewModel.Instance.AppBarText = "这是 GameVault 的高级功能 - 立即升级并支持开发者！";
                             }
                             catch { }
                             return;
@@ -311,7 +311,7 @@ namespace gamevault.UserControls
                     string updatedUser = await WebHelper.PutAsync(url, JsonSerializer.Serialize(updateObject));
                     ViewModel.OriginUser = JsonSerializer.Deserialize<User>(updatedUser);
                     success = true;
-                    MainWindowViewModel.Instance.AppBarText = "Successfully updated image";
+                    MainWindowViewModel.Instance.AppBarText = "已成功更新图片";
                 }
                 catch (Exception ex)
                 {
@@ -375,7 +375,7 @@ namespace gamevault.UserControls
                 {
                     WebHelper.OverrideCredentials(selectedUser.Username, selectedUser.Password);
                 }
-                MainWindowViewModel.Instance.AppBarText = "Successfully saved user changes";
+                MainWindowViewModel.Instance.AppBarText = "已成功保存用户更改";
             }
             catch (Exception ex)
             {
@@ -425,7 +425,7 @@ namespace gamevault.UserControls
             try
             {
                 Clipboard.SetText(ViewModel.OriginUser.ApiKey);
-                MainWindowViewModel.Instance.AppBarText = "Copied API Key to Clipboard";
+                MainWindowViewModel.Instance.AppBarText = "已将 API 密钥复制到剪贴板";
             }
             catch { }
         }

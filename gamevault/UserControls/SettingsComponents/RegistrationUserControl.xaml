@@ -26,8 +26,8 @@
         <Border CornerRadius="5" Background="{DynamicResource MahApps.Brushes.ThemeBackground2}" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Accent3}">
             <Grid>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="430" Margin="0,8,0,0">
-                    <TextBlock Text="Register New User" FontSize="30" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Specify Your Server URL" TextDecorations="Underline" Margin="0,15,0,5"/>
+                    <TextBlock Text="注册新用户" FontSize="30" HorizontalAlignment="Center"/>
+                    <TextBlock Text="指定你的服务器 URL" TextDecorations="Underline" Margin="0,15,0,5"/>
                     <StackPanel Orientation="Horizontal">
                         <TextBox Text="{Binding SignupUser.ServerUrl}" mah:ControlsHelper.CornerRadius="5" Width="400" BorderThickness="2" TextChanged="ServerUrlInput_TextChanged" KeyDown="UserRegistrationTextBox_KeyDown"/>
                         <Path Margin="2,1,-25,0">
@@ -67,20 +67,20 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Width="195" Grid.Column="0">
-                                <TextBlock Text="Username" TextDecorations="Underline" Margin="0,15,0,5"/>
+                                <TextBlock Text="用户名" TextDecorations="Underline" Margin="0,15,0,5"/>
                                 <TextBox Text="{Binding SignupUser.Username}" mah:ControlsHelper.CornerRadius="5" BorderThickness="2" KeyDown="UserRegistrationTextBox_KeyDown"/>
                             </StackPanel>
                             <StackPanel Width="195" Grid.Column="2">
                                 <StackPanel Orientation="Horizontal" Margin="0,15,0,5">
-                                    <TextBlock Text="Birth Date" TextDecorations="Underline"/>
-                                    <TextBlock Text="(Mandatory)" Visibility="{Binding SignUpServerInfo.IsBirthDateMandatory,Converter={StaticResource boolToVisConv}}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                    <TextBlock Text="出生日期" TextDecorations="Underline"/>
+                                    <TextBlock Text="(必填)" Visibility="{Binding SignUpServerInfo.IsBirthDateMandatory,Converter={StaticResource boolToVisConv}}" VerticalAlignment="Center" Margin="5,0,0,0"/>
                                 </StackPanel>
                                 <DatePicker SelectedDate="{Binding SignupUser.BirthDate}" mah:ControlsHelper.CornerRadius="5" BorderThickness="2" KeyDown="UserRegistrationTextBox_KeyDown"/>
                             </StackPanel>
                         </Grid>
                         <StackPanel Orientation="Horizontal" Margin="0,15,0,5">
                             <TextBlock Text="E-Mail" TextDecorations="Underline"/>
-                            <TextBlock Text="(Mandatory)" Visibility="{Binding SignUpServerInfo.IsEMailMandatory,Converter={StaticResource boolToVisConv}}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                            <TextBlock Text="(必填)" Visibility="{Binding SignUpServerInfo.IsEMailMandatory,Converter={StaticResource boolToVisConv}}" VerticalAlignment="Center" Margin="5,0,0,0"/>
                         </StackPanel>
                         <TextBox Text="{Binding SignupUser.EMail}" mah:ControlsHelper.CornerRadius="5" BorderThickness="2" KeyDown="UserRegistrationTextBox_KeyDown"/>
                         <Grid>
@@ -91,15 +91,15 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Width="195" Grid.Column="0">
                                 <StackPanel Orientation="Horizontal" Margin="0,15,0,5">
-                                    <TextBlock Text="First Name" TextDecorations="Underline"/>
-                                    <TextBlock Text="(Mandatory)" Visibility="{Binding SignUpServerInfo.IsFirstNameMandatory,Converter={StaticResource boolToVisConv}}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                    <TextBlock Text="名" TextDecorations="Underline"/>
+                                    <TextBlock Text="(必填)" Visibility="{Binding SignUpServerInfo.IsFirstNameMandatory,Converter={StaticResource boolToVisConv}}" VerticalAlignment="Center" Margin="5,0,0,0"/>
                                 </StackPanel>
                                 <TextBox Text="{Binding SignupUser.FirstName}" mah:ControlsHelper.CornerRadius="5" BorderThickness="2" KeyDown="UserRegistrationTextBox_KeyDown"/>
                             </StackPanel>
                             <StackPanel Width="195" Grid.Column="2">
                                 <StackPanel Orientation="Horizontal" Margin="0,15,0,5">
-                                    <TextBlock Text="Last Name" TextDecorations="Underline"/>
-                                    <TextBlock Text="(Mandatory)" Visibility="{Binding SignUpServerInfo.IsLastNameMandatory,Converter={StaticResource boolToVisConv}}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                    <TextBlock Text="姓" TextDecorations="Underline"/>
+                                    <TextBlock Text="(必填)" Visibility="{Binding SignUpServerInfo.IsLastNameMandatory,Converter={StaticResource boolToVisConv}}" VerticalAlignment="Center" Margin="5,0,0,0"/>
                                 </StackPanel>
                                 <TextBox Text="{Binding SignupUser.LastName}" mah:ControlsHelper.CornerRadius="5" BorderThickness="2" KeyDown="UserRegistrationTextBox_KeyDown"/>
                             </StackPanel>
@@ -111,11 +111,11 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Width="195" Grid.Column="0">
-                                <TextBlock Text="Password" TextDecorations="Underline" Margin="0,15,0,5"/>
+                                <TextBlock Text="密码" TextDecorations="Underline" Margin="0,15,0,5"/>
                                 <TextBox helper:PasswordBoxAttachedProperties.IsPassword="True" helper:PasswordBoxAttachedProperties.ActualPassword="{Binding SignupUser.Password}" mah:ControlsHelper.CornerRadius="5" BorderThickness="2" KeyDown="UserRegistrationTextBox_KeyDown"/>
                             </StackPanel>
                             <StackPanel Width="195" Grid.Column="2">
-                                <TextBlock Text="Repeat Password" TextDecorations="Underline" Margin="0,15,0,5"/>
+                                <TextBlock Text="重复密码" TextDecorations="Underline" Margin="0,15,0,5"/>
                                 <TextBox helper:PasswordBoxAttachedProperties.IsPassword="True" helper:PasswordBoxAttachedProperties.ActualPassword="{Binding SignupUser.RepeatPassword}" mah:ControlsHelper.CornerRadius="5" BorderThickness="2" KeyDown="UserRegistrationTextBox_KeyDown"/>
                             </StackPanel>
                         </Grid>
@@ -123,7 +123,7 @@
                     </StackPanel>
                     
                 </StackPanel>
-                <uc:IconButton Text="Register" Height="30" Margin="0,0,10,10" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="RegisterNewUser_Click"/>
+                <uc:IconButton Text="注册" Height="30" Margin="0,0,10,10" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="RegisterNewUser_Click"/>
             </Grid>
         </Border>
     </Grid>

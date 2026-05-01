@@ -27,7 +27,7 @@
                 </Grid>
             </Button>
             <StackPanel>
-                <TextBlock Text="Choose your download location" FontWeight="Bold" FontSize="20" Margin="10"/>
+                <TextBlock Text="选择你的下载位置" FontWeight="Bold" FontSize="20" Margin="10"/>
                 <ScrollViewer Height="200" VerticalScrollBarVisibility="Auto" Background="Transparent">
                     <ItemsControl ItemsSource="{Binding RootDirectories}">
                         <ItemsControl.ItemsPanel>
@@ -58,8 +58,8 @@
                 </ScrollViewer>
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,10" Orientation="Horizontal" HorizontalAlignment="Center">
-                <local:IconButton Text="Proceed" Height="25" Width="100" Click="Install_Click"/>
-                <local:IconButton Text="Cancel" Kind="Skeleton" BorderThickness="1" Height="25" Width="100" Margin="10,0,0,0" Click="Close_Click"/>
+                <local:IconButton Text="继续" Height="25" Width="100" Click="Install_Click"/>
+                <local:IconButton Text="取消" Kind="Skeleton" BorderThickness="1" Height="25" Width="100" Margin="10,0,0,0" Click="Close_Click"/>
             </StackPanel>
         </Grid>
     </Border>

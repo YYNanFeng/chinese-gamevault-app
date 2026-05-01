@@ -18,13 +18,13 @@ namespace gamevault.Helper
                 string shortcutPath = desktopDir + @"\\" + game.Title + ".url";
                 if (File.Exists(shortcutPath))
                 {
-                    MainWindowViewModel.Instance.AppBarText = "Desktop shortcut already exists";
+                    MainWindowViewModel.Instance.AppBarText = "桌面快捷方式已存在";
                     return;
                 }
                 if (ask)
                 {
-                    MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"Do you want to create a desktop shortcut for {game.Title}?", "",
-                    MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "Yes", NegativeButtonText = "No", AnimateHide = false });
+                    MessageDialogResult result = await ((MetroWindow)App.Current.MainWindow).ShowMessageAsync($"要为 {game.Title} 创建桌面快捷方式吗？", "",
+                    MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "是", NegativeButtonText = "否", AnimateHide = false });
 
                     if (result != MessageDialogResult.Affirmative)
                         return;

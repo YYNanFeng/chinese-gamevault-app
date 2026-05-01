@@ -41,7 +41,7 @@
                         </markdig:MarkdownViewer.Resources>
                     </markdig:MarkdownViewer>
                 </mah:MetroTabItem>
-                <mah:MetroTabItem Header="Server News">
+                <mah:MetroTabItem Header="服务器新闻">
                     <markdig:MarkdownViewer x:Name="uiServerNews" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}">
                         <markdig:MarkdownViewer.Resources>
                             <ResourceDictionary Source="/Resources/Assets/MarkdownStyles.xaml"/>
